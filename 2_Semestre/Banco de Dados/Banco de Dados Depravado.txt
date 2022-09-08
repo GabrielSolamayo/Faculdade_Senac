@@ -1,0 +1,33 @@
+show databases;
+
+create table Cliente (
+    cod_cli int not null primary key,
+    nome_cli varchar(50) not null,
+    endereco varchar(50) null,
+    cidade varchar(20),
+    cep char(9) null,
+    uf char(2)
+);
+
+create table produto(
+cod_prod int not null primary key null auto_increment,
+unid_prod char(03) not null,
+desc_prod varchar(20) not null,
+val_unit numeric(9,2) not null
+);
+
+create table vendedor(
+    cord_vend int not null primary key auto_increment,
+    nome_vend varchar(50) not null,
+    sal_fixo decimal(9,2),
+    faixa_comiss char(1)
+);
+
+create table pedido (
+    num_pedido int not null primary key auto_increment,
+    prazo int not null,
+    fk_cod_vend int,
+    fk_cod_cli int,
+    foreign key (fk_cod_vend) references vendedor (cod_vend),
+    foreign key (fk_cod_cli) references cliente (cod_cli)
+);

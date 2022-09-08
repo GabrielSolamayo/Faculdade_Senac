@@ -1,0 +1,27 @@
+Algoritmos e Programação
+25/03/2022
+Prof Marcos Monteiro
+
+
+			
+Vetor: coleção de variaveis do mesmo tipo, identificadas pelo mesmo nome e acessadas pelo seus indices.
+
+//Com um so colchetes é um Vetor, com mais de um é Matriz, que pode ser infinito a quantidade de colchetes porem nao é muito utilizado.
+
+//A diferença de um vetor para uma matriz é a dimensao.
+
+//Colchetes indica vetor ou matriz sempre.
+
+float notas[][]
+
+//vetor
+float numeros [] = new float [4];
+numeros [0] = 12.3;//Atribuindo um valor na posicao 0 do vetor;
+numeros [1] = Float.parseFloat(JOptionPane.showInputDialog("Número: ")	
+		    Converte   *Demonstra  * Lê a resposta e retorna em String
+		    em float   *numa janela*
+
+Indice é a posição de um vetor/matriz.
+valor é o que esta dentro de um indice.
+
+//Crtl + Espaço = atalho para completar o codigo.//

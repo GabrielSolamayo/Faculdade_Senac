@@ -1,0 +1,17 @@
+Classe: é um modelo para criação de um objetos. (basicamente)
+Objeto: é um uma instância de uma classe, ou seja o produto dela. EX: Pessoa p= new Pessoa();
+
+- Letras maiusculas sao classes ou 
+- Método é semelhante a uma função ou procedimento, quando retorna um valor é uma função, quando nao retorna é um procedimento. Ou seja métodos abrangem funções e procedimento. Assim método sempre executa uma ação
+- Encapsulamento é a proteção (PUBLIC static void main)
+
+
+"Vetores" são uma coleção de variaveis do mesmo tipo, identificadas pelo mesmo nome e acessada atraves de sues indices.
+
+"Static" aplicada a um metodo indica que esse metodo pertence a classe ou seja, não precisa de um objeto para  ser chamada. Moderador de Acesso.
+ 
+"Classe" modelo para criação de um objetos, objeto é uma instancia de uma "Classe".
+  
+"Metodo" é semelhante a uma função ou procedimento, quando retorna um valor é uma função, quando não retorna é um procedimento ou seja, o metodo sempre executa uma ação.
+
+"Encapsulamento" é a proteção (PUBLIC static void main)

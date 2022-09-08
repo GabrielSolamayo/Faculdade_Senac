@@ -1,0 +1,30 @@
+public static void main(String[] args) {
+        int qnt = Integer.parseInt(JOptionPane.showInputDialog("Digite a quantidade de funcionarios: "));
+        float salario[] = new float [qnt]; // Vetor de Salario.
+        String nome[] = new String [qnt]; // Vetor de Nomes.
+        float somaS = 0;
+        float maiorS = 0;
+        int menors = 0;
+        String maiorN = "";
+        
+        for(int i = 0; i < salario.length; i++){ // Laco para Ler os nomes e salarios.
+        nome[i] = JOptionPane.showInputDialog("Digite o nome do "+(i+1)+" funcionario: ");
+        salario [i] = Float.parseFloat(JOptionPane.showInputDialog("Digite o salario de "+nome[i]+": "));
+            if(salario[i] > maiorS){ // Verifica o maior salario digitado.
+                maiorS = salario[i];
+                maiorN = nome[i];
+            }
+                if(salario[i] < 850.00){ // Verifica o menor salario para CONTAR!!.
+                    menors = menors++;
+                }
+            somaS += salario[i]; // Soma os salario para calcular as medias posteriormente.    
+        }
+        for(int a = 0; a < salario.length; a++){ // Laco para imprimir os nomes com seus respectivos.
+            System.out.println("Funcionario: "+nome[a]);
+            System.out.println("Salario: "+salario[a]);
+            System.out.println("---------------------------------");
+        }
+        System.out.println("O maior Salario é de "+maiorN+" com R$"+(maiorS));
+        System.out.println("Existem "+menors+" salarios abaixo de R$850.00");
+        System.out.println("Media de salario é :"+(somaS/qnt));
+    }

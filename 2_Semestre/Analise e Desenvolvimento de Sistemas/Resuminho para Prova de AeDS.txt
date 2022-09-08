@@ -1,0 +1,102 @@
+Analise de Desenvolvimento de Sistemas 
+Resumos sla
+
+Planejamente
+Análise             =    SDLC (Systems Development Life Cycle) 
+Projeto e		      (Ciclo de Vida de Desenvolvimento de Sistemas)
+Imprementação
+
+
+Planejamento – Determinar a razão da existencia do sistema e como proceder
+
+Análise – Responde as perguntas sobre quem usara o sistema, o que o sistema fara e onde e quando ele será usado.
+
+Projeto -  Basicamente como o sistema operará : hardware, software, redes, usuario, etc.
+
+Implementeação - Etapa final onde de fato é construido o sistema.
+
+
+
+--MODELO DE PROCESSO--
+
+Feitos para organizar a área de desenvolvimento de software. Onde é basicamente um guia que define o fluxo das tarefas. O que proporciona estabilidade ao projeto todo.
+----------------------------------------------------------------------------
+
+
+Modelo de Processo PRESCRITIVO: Prescrevem, sequencialmente, um conjunto de processos, com diretrizes de progesso definidas.
+
+Modelo de Processo CASCATA(ou ciclo de vida clássico): Abordagem sequencial e sistemática, começando com a especificação dos requisitos do cliente, avançando pelas fases de planejamento, modelagem, construção e disponibilização, e culminando no suporte contínuo do software concluído.
+A variação V é uma "cascata", porém podendo visualizar melhor com uma imagem.
+
+
+Comunicação  ->  Planejamento  ->  Modelagem  ->  Contrução  ->  Entrega
+Requisitos   |  Estimativa     |  Analise      |  Codigo      |   Suporte
+		 Cronograma    |  Projeto      |  Teste       |  Feedback
+	       Acompanhamento
+
+
+
+Modelo de Processo INCREMENTAL:
+
+- Requisitos iniciais ate que definidos;
+- Quando é incapaz de usar um processo linear, devido ao escopo geral;
+- Gradualmente entrega "incrementos" entregáveis do software;
+- Resquisitos básicos atendidos primeiro;
+
+Modelo de Processo EVOLUCIONÁRIO: 
+
+- Produto essencial ou dos requisitos do sistema está bem compreendido;
+- Especificamente para desenvolver um produto que cresce e muda;
+- Modelos evolucionários são iterativos;
+
+
+Prototipação = 
+- Uma técnica que pode ser usada em qualquer modelo;
+- Utilizado para requisitos ainda obscuros;
+1- Reunir os envolvidos e difinir objetivos, requisitos e detalhes.
+2- Um planejamento rapido.
+3- Realizar uma modelagem do Projeto Rapido.
+4- Construir um protótipo e receber feedbacks.(Protótipo em seguida podem ser descartados ou usados de forma evolutiva)
+
+
+Espiral =
+- Processo evolucionário que une a natureza iterativa da prototipação aos aspectos sistemáticos e controlados do modelo cascata.
+- Voltada para ampliar o grau de definição e implementação de um sistema.
+- Possui marcos de pontos-âncora para garantir o comprometimento dos envolvidos quanto à busca de soluções de sistema que sejam mutuamente satisfatórias e viáveis.
+- Desenvolvido em uma série de versões evolucionárias. 
+- Os riscos são levados em conta à medida que cada revolução é realizada.
+
+
+
+--DESENVOLVIMENTO ÁGIL--
+
+Metodologia ágil é um conjunto de técnicas e práticas para gestão de projetos que oferece mais rapidez e flexibilidade, podendo ser inevitável o sacrifico de qualiadade devido a falta de tempo.
+- O sistema é desenvolvido em uma série de versões.
+- Desenvolvimento incremental.
+- Obter feedback rapido.
+- Minimiza documentação e se utiliza mais a comunicação informal.
+
+
+--ENGENHARIA DE REQUISITOS--
+
+A engenharia de requisitos oferece controles e padrões para que as exigências do projeto sejam claras, correspondam às suas finalidades e possam ser compreendidas por todos os responsáveis. Isso garante a qualidade do software, além de mais produtividade em suas etapas de desenvolvimento, operação e manutenção.
+
+-Requisitos de usuario mostrará os serviços que o sistema deverá fornecer ao  usuario com uma linguagem não tecnica e de facil entendimento do usuario.
+-Resquisito de sistema sao descrições mais detalhadas das funções, serviços e  restrições operacionais do sistema de software. 
+
+- Requisitos Funcionais definem o que o sistema fará.      ------>  Bem por
+- Requisitos Não Funcionais definem como o sistema fará.   ------>  cima
+
+- O documento de requisitos de software deve incluir tanto os requisitos de usuário para um sistema quanto uma especificação detalhada dos requisitos de sistema.
+
+
+--CASO DE USO-- (stickmans)
+
+Possui atores e envolvidos em uma interação e dá nome ao tipo de interação.
+
+
+--MODELAGEM DE SISTEMA--
+
+Modelagem de sistema é o processo de desenvolvimento de modelos abstratos de um sistema, em que cada modelo apresenta uma visão ou perspectiva, diferente do sistema.
+
+

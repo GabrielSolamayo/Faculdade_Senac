@@ -1,0 +1,12 @@
+23/03/2022
+Prof Carlos Henrique Verissimo Pereira
+
+				Programação Web
+
+Linguagem de programação tem 3 aspectos:
+
+-Sintático
+-Semântico
+-Léxico
+
+Persona, requisitos, protótipo

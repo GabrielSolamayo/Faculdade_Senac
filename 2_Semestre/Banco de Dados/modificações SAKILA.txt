@@ -1,0 +1,391 @@
+use sakila;
+select * from actor;
+select * from customer;
+select * from address;
+select * from city;
+select * from country;
+select * from customer
+            inner join address using (address_id);
+select * from customer
+            inner join address using (address_id)
+            inner join city on address.city_id = city.city_id
+            inner join country on city.country_id = country.country_id;
+--------------------------------------------------------------------------------
+select * from rental;
+select * from client;
+select * from customer;
+select first_name from customer where first_name = 'Mary';
+/* Quantas locações a cliente Marry realizou */
+
+select count(*) QUANTIDADE_DE_LOCAÇÔES_DE_MARY from rental
+        inner join customer on rental.customer_id = customer.customer_id
+        where customer.first_name like 'Mary';
+
+/* Quais os tipos dos filmes assistidos por Marry */
+select * from inventory;
+select film.title from rental
+                inner join customer on rental.customer_id = customer.customer_id
+                inner join inventory on rental.inventory_id = inventory.inventory_id
+                inner join film on inventory.film_id = film.film_id
+                where customer.first_name like 'Mary';
+
+/* Quantos dolares a Mary ja gastou nessa locadora */
+desc customer;
+select sum(payment.amount)GASTO_DE_MARY, customer.first_name  from payment
+			inner join customer on payment.customer_id = customer.customer_id
+            where customer.first_name like 'Mary';
+				
+
+/*Qual sao os 5 primeiros generos de filmes favoritos da Mary */
+
+desc rental;
+select * from rental;
+select * from inventory;
+
+/*Gere uma listagem das locações realizadas por Barbara Jones com o custo de cada locação*/
+select * from rental;
+select rental.rental_date, film.rental_rate, concat(customer.first_name,' ',customer.last_name) from rental
+	inner join customer on rental.customer_id = customer.customer_id
+        inner join inventory on rental.inventory_id = inventory.inventory_id
+        inner join film on inventory.film_id = film.film_id
+	where customer.first_name like 'Barbara%';
+        
+
+/*Quais os 5 primeiros generos favoritos dos clientes*/
+
+select category.name, count(*) from rental
+        inner join inventory on rental.inventory_id = inventory.inventory_id
+        inner join film_category on inventory.film_id = film_category.film_id
+        inner join category on film_category.category_id = category.category_id
+		group by category.category_id
+        order by 2 desc 
+        limit 5;
+        
+
+/*Gere o valor total arrecadado em uma data existente na base*/
+
+select date(payment_date) as 'Data', sum(amount) as 'Total' from payment 
+			where date(payment_date) = '2005-05-25';
+
+/*Qual a quantidade de filmes que cada ator participou nesta base de dados, ordenar pelo maior participante para os que menos participam */
+
+select actor.first_name, count(*) as 'Quantidade de Participação' from film
+        inner join film_actor on film.film_id = film_actor.film_id
+        inner join actor on film_actor.actor_id = actor.actor_id
+		group by actor.actor_id
+        order by 2 desc;
+
+/*Os clientes estao representados pelo gerentes , quantos cliente tem cada um?*/
+
+select * from store;
+select * from customer;
+select * from staff;
+select staff.first_name as 'Nome(s) do Gerente', count(*) 'Quantidade de Clientes Representados' from customer
+	inner join store on customer.store_id = store.store_id /* inner join store using(store_id)*/
+        inner join staff on store.manager_staff_id = staff.staff_id
+        group by staff.staff_id
+        ;
+
+/* gere uma listagem do titulo do filme do filme e o genero do filme, ordenando por titulo*/
+
+select * from film;
+select * from category;
+select film.title as 'Titulo do Filme', category.`name` as 'Genero do Filme'from film_category
+            inner join film on film_category.film_id = film.film_id
+            inner join category on film_category.category_id = category.category_id
+            order by film.title;
+
+
+/*--------------------------------------------------------------------------------------------------*/
+
+create view  Film_cat as 
+select film.title as 'Titulo do Filme', category.`name` as 'Genero do Filme'from film_category
+            inner join film on film_category.film_id = film.film_id
+            inner join category on film_category.category_id = category.category_id
+            order by film.title;
+
+/*Se trocar alguma informação em uma tabela o VIEW atualiza junto com a tabela linkada*/ 
+select * from Film_cat;
+select * from film;
+update film set title = 'Academy Dinossaur novo' where film_id = 1;
+
+
+
+create view  Film_cat_valor as 
+select film.title as 'Titulo do Filme', category.`name` as 'Genero do Filme', film.rental_rate as 'Valor', (film.rental_rate * 1.10) as 'Valor_Novo'from film_category
+            inner join film on film_category.film_id = film.film_id
+            inner join category on film_category.category_id = category.category_id
+            order by film.title;
+
+select * from Film_cat_valor;
+
+
+
+/*Gere uma listagem das locações realizada, com a data da locação, nome do cliente e nome do filme*/
+
+select * from rental;
+select rental.rental_id 'Locação_ID', rental.rental_date 'Data/Hora_de_Locação', concat(customer.first_name,' ',customer.last_name) 'Nome_do_Cliente', film.title 'Titulo_do_Filme' from rental
+        inner join customer on rental.customer_id = customer.customer_id
+        inner join inventory on rental.inventory_id = inventory.inventory_id
+        inner join film on inventory.film_id = film.film_id
+        order by rental.rental_id;
+
+create view loca_cliente as 
+        select rental.rental_id 'Locação_ID', rental.rental_date 'Data/Hora_de_Locação', concat(customer.first_name,' ',customer.last_name) 'Nome_do_Cliente', film.title 'Titulo_do_Filme' from rental
+        inner join customer on rental.customer_id = customer.customer_id
+        inner join inventory on rental.inventory_id = inventory.inventory_id
+        inner join film on inventory.film_id = film.film_id
+        order by rental.rental_id;
+
+select * from loca_cliente;
+
+alter view loca_cliente as 
+        select rental.rental_id 'Locação_ID', rental.rental_date 'Data/Hora_de_Locação', concat(customer.first_name,' ',customer.last_name) 'Nome_do_Cliente', film.title 'Tuitilo_do_Filme' from rental
+        inner join customer on rental.customer_id = customer.customer_id
+        inner join inventory on rental.inventory_id = inventory.inventory_id
+        inner join film on inventory.film_id = film.film_id
+        order by rental.rental_id;
+
+
+select A.nome, B.first_name from clinica.paciente A
+        inner join sakila.customer B on A.codp = B.customer_id;
+
+
+select * from payment;
+
+/*Funcao*/
+delimiter $$
+create function comissao_venda(wvalor decimal(9,2))
+returns decimal(9,2)
+deterministic
+begin
+declare comissao decimal(9,2);
+set comissao = wvalor * 0.05;
+return comissao;
+
+end $$
+
+select amount, comissao_venda(amount) from payment;
+
+
+/*Crie uma função para calcular 5% para o staff 1 e 10% para o staff 2 */
+
+delimiter $$
+/*alter*/ create function comissao_venda2(wvalor decimal(9,2), widstaff int)
+returns decimal(9,2)
+deterministic
+begin
+    declare comissao decimal(9,2);
+    if widstaff = 1 then
+        set comissao = wvalor * 0.05;
+    else
+        set comissao = wvalor * 0.10;
+    end if;
+    return comissao;
+end $$
+
+select amount, comissao_venda2(amount, staff_id) from payment;
+
+select * from staff;
+alter table staff add column comiss_staff decimal(7,2);
+update staff set comiss_staff = 0.08 where staff_id = 2;
+
+
+
+
+----------------------------------------------------------------------------------------
+
+delimiter $$
+/*alter*/ create function comissao_venda3(wvalor decimal(9,2), widstaff int)
+returns decimal(9,2)
+deterministic
+begin
+    declare comissao decimal(9,2);
+    declare percent decimal (7.2);
+    select comiss_staff into percent from staff where staff_id = widstaff;
+        set comissao = wvalor * percent;
+    return comissao;
+end $$
+
+select staff_id, amount, comissao_venda3(amount, staff_id) from payment;
+
+
+/*Crie uma função para listar o nome do cliente sendo sobrenome, nome*/
+
+delimiter $$
+create function nome_cli(widcliente int)
+returns varchar (90)
+deterministic
+begin
+    declare nomecompleto varchar(90);
+    select concat(last_name,', ',first_name) into nomecompleto from customer where customer_id = widcliente;
+    return nomecompleto;
+end $$
+
+select nome_cli(customer_id) from customer;
+
+/*-----------------------------------------------------------------------------------*/
+
+select customer_id,count(*) from customer group by store_id;
+
+delimiter $$
+create procedure pag_dia(wdata date)
+begin
+select payment_id as 'Número Pag',amount as 'Valor' from payment where date(payment_date) = wdata;
+end
+$$
+
+drop procedure pag_dia;
+call pag_dia('2005-05-25');
+
+/*------------------------------------------------------------------------------------*/
+
+
+select * from payment;
+select * from copia_payment;
+create table copia_payment as select * from payment;
+truncate copia_payment;
+
+alter table copia_payment add column usuario varchar(50);
+alter table copia_payment add column data_mod datetime;
+
+
+delimiter $$
+Create trigger audita_pay after update on payment for each row
+begin
+if (NEW.amount <> old.amount) then
+    insert into copia_payment (payment_id, customer_id, amount, usuario, data_mod)
+        values (old.payment_id, old.customer_id, old.amount, 'Romulo', now());
+    end if;
+end 
+$$
+
+drop trigger audita_pay;
+update payment set amount = 5.99 where payment_id = 1;
+update payment set customer_id = 2 where payment_id = 2;
+select * from copia_payment;
+select * from payment;
+
+
+/*----------------------------EXERCICIOS----------------------------------*/
+
+/*1. Supondo as seguintes tabelas: 
+Cliente (codc, nome, telefone), 
+venda (codv, codc, codp, qtd_venda, data_venda), 
+produto (codp, descrição, qtd, preço_venda)*/
+
+/*a. Crie um afunção que gere o total gastos por cliente*/
+/*b. Crie uma trigger para realizar a baixa do estoque quando for realizada uma venda*/
+/*c. Crie um usuário com permissão de incluir e excluir venda*/
+/*d. Crie uma função para realzar um extrono da venda realizada*/
+/*e. Gere um relatoio com a lisstagem ds nomes dos clientes, total das compras do cliente, se uma data determinadade movmento do dia*/
+/*f. Gere um relatorio dos produtos mais vendidos no dia*/
+
+drop table cliente;
+
+/*CRIAÇÂO DE TABELAS*/
+create table cliente (
+codc int not null primary key auto_increment,
+nome varchar (30) not null,
+telefone int (9) null
+);
+
+create table produto (
+codp int not null primary key auto_increment,
+descrição varchar (25) not null,
+qtd int not null,
+preço_venda float not null
+);
+
+create table venda (
+codv int not null primary key auto_increment,
+qtd_venda int not null,
+data_venda date null,
+fk_codc int,
+fk_codp int, 
+foreign key (fk_codc) references cliente(codc),
+foreign key (fk_codp) references produto(codp)
+);
+
+/*INSERINDO DADOS NAS TABELAS*/
+select * from cliente;
+insert into cliente (nome,telefone)
+values('Joao', 123456789),
+      ('Maria', 987654321),
+      ('Pedro', 192837465),
+      ('Carlos', 912873465),
+      ('Marcia', 123098476);
+
+select * from produto;
+insert into produto (descrição,qtd,preço_venda)
+values('Lápis', 20, 5.35),
+      ('Borracha', 15, 3.35),
+      ('Caneta', 30, 4.40),
+      ('Teclado', 10, 6.75),
+      ('Mouse', 45, 6.15);
+
+select * from venda;
+insert into venda (qtd_venda,data_venda,fk_codc,fk_codp)
+values(6,"2006-06-12", 1, 2),
+      (9,"2006-07-13" ,2, 3),
+      (10,"2006-06-13",3, 5),
+      (2,"2006-06-14",4, 4),
+      (4,"2006-06-15",5, 1);
+
+
+/*MODIFICAÇÔES*/
+
+/*a)Crie um afunção que gere o total gastos pelo cliente*/
+drop function gasto_cli;
+delimiter $$
+create function gasto_cli(widcliente int)
+returns decimal (9,2)
+deterministic
+begin
+    declare total decimal (9,2);
+    select sum(produto.preço_venda) into total from venda 
+        inner join produto on venda.fk_codp = produto.codp
+        where venda.fk_codc = widcliente;
+    return total;
+end $$
+select * from produto;
+select gasto_cli(fk_codc) from venda;
+
+
+
+/*b. Crie uma trigger para realizar a baixa do estoque quando for realizada uma venda*/
+
+
+delimiter $$
+create trigger gravar_comp after insert on venda for each row
+begin
+    update produto set qtd = qtd - NEW.qtd_venda where codp = NEW.fk_codp;
+end $$
+
+
+/*c. Crie um usuário com permissão de incluir e excluir venda*/
+
+create user 'Yuri'@'localhost' identified by '1234'; --senha
+grant insert , delete on sakila.* to 'Yuri'@'localhost';
+
+/*d. Crie uma função para realzar um extrono da venda realizada*/
+
+delimiter $$
+create trigger extorno_estoque before delete on venda for each row
+begin
+    update produto set qtd = qtd + old.qtd_venda where codp = old.fk_codp;
+end $$
+
+
+delimiter $$
+create function extorno_estoque(widprod int, wqtd int)
+returns varchar (30)
+deterministic
+begin
+    update produto set qtd = qtd + old.qtd_venda where codp = NEW.codp;
+return 'Extorno Realizado';
+end $$
+
+/*e. Gere um relatorio com a lisstagem ds nomes dos clientes, total das compras do cliente, se uma data determinadade movmento do dia*/
+
+

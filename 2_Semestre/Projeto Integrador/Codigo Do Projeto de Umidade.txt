@@ -1,0 +1,50 @@
+// Soil moisture tester
+
+// Set leds numbers
+const int verde = 8;          
+const int amarelo = 9;
+const int vermelho = 10;
+
+// Set analog input
+const int sensor = A0;
+
+// Variable to store moisture value
+int umidade = 0;
+
+void setup() {
+  
+  //Set name as outputs
+  pinMode(verde, OUTPUT);
+  pinMode(amarelo, OUTPUT);
+  pinMode(vermelho, OUTPUT);
+
+}
+
+void loop() {
+
+  umidade = analogRead(sensor); //take the lecture from the sensor
+
+  if(umidade < 300) {             // If the moisture value is less than 300 lights on green led and turns off others.
+    digitalWrite(verde, HIGH);
+    digitalWrite(amarelo, LOW);
+    digitalWrite(vermelho, LOW);
+    delay(1000);
+  }
+
+  else if(umidade > 300 && umidade < 600){    // If the moisture value is more than 300 but less that 600 lights on yellow led and turns off others..
+    digitalWrite(verde, LOW);
+    digitalWrite(amarelo, HIGH);
+    digitalWrite(vermelho, LOW);
+    delay(1000);
+  }
+
+  else {                                    // Any value more than 600 lights on red led and turns off others.
+    digitalWrite(verde, LOW);
+    digitalWrite(amarelo, LOW);
+    digitalWrite(vermelho, HIGH);
+    delay(1000);
+    
+  }
+  delay(1000);    //Retardo de 1 segundo antes de iniciar el ciclo nuevamente.
+
+}

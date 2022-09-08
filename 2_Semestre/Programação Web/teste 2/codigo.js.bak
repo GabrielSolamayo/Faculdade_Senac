@@ -1,0 +1,2 @@
+nomePublico = Andre Gonçalvez/
+alert("Ola "+nomePublico+"\nBem vindo ao CharMov");

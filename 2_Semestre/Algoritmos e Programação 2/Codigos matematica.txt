@@ -1,0 +1,85 @@
+Algoritmo e Programação 2
+Prof MARCOS DE ARRUDA MONTEIRO
+08/04/2022
+
+
+	String st = "Biologia é uma ciencia";
+	String nova = st.concat("que estuda a vida!");  //Junta st com o 	parametro na variavel nova;
+
+	System.out.println(st);
+	System.out.println(nova);
+	String nova2 = st.replace('o', 'a');  //Substitui 'o' por 'a' na 	variavel nova 2
+
+	System.out.println(st);
+S	ystem.out.println(nova2);
+
+
+- String é sempre uma constante;
+- Aspas simples ('') é para char;
+- Aspas dupla ("") é pra string;
+
+
+Math.random()* (B - A) + A;
+
+
+
+	// Math.abs = Tornar os numeros positivos
+	System.out.println(Math.abs(23.53)); // retorna 23.53
+        System.out.println(Math.abs(35));    // retorna 35  
+        System.out.println(Math.abs(-65));   // retorna 65  
+
+        System.out.println("-----------------------------");
+
+	// Math.ceil = Arredonda os numeros para um valor a mais
+        System.out.println(Math.ceil(12.1)); // retorna 13.0
+        System.out.println(Math.ceil(35.8)); // retorna 36.0
+        System.out.println(Math.ceil(-3.4)); // retorna -3.0
+
+	System.out.println("--------------------------------");
+
+	// Math.floor = Arredonda os numeros para um valor a menos
+        System.out.println(Math.floor(12.1)); // retorna 12.0
+        System.out.println(Math.floor(35.8)); // retorna 35.0
+        System.out.println(Math.floor(-3.4)); // retorna -4.0
+
+        System.out.println("---------------------------------");
+
+	//Math.max = retorna o maior entre os dois numeros;
+        System.out.println(Math.max(12.2, 35));     // retorna 35
+        System.out.println(Math.max(-35.3, -40.8)); // retorna -35.3
+        System.out.println(Math.max(100.2, 500.9)); // retorna 500.9
+
+	System.out.println("-----------------------------------");
+
+	//Math.min = Retorna o minimo entre os dois numeros;
+        System.out.println(Math.min(12.2, 35));
+        System.out.println(Math.min(-35.3, -40.8));
+        System.out.println(Math.min(100.2, 500.9));
+
+	System.out.println("-----------------------------------");
+
+	//Math.pow = retorna a porencia do primeiro numero;
+        System.out.println(Math.pow(3, 2));
+        System.out.println(Math.pow(-2, 4));
+        System.out.println(Math.pow(15, 2));
+
+	System.out.println("-----------------------------------");
+
+	//Math.random = Retorna um numero ALEATORIO 0 >= numero < 1
+	System.out.println(Math.random()*(60 - 2) + 1);
+
+	System.out.println("-----------------------------------");
+
+	// Arredonda numero conforme ciretrio matematico;
+        System.out.println(Math.round(5.499999)); // retorna 5
+        System.out.println(Math.round(6.8));	  // retorna 6
+        System.out.println(Math.round(7.499999)); // retorna 5
+        System.out.println(Math.round(8.6));      // retorna 6
+        System.out.println(Math.round(9.5));      // retorna 6
+
+	System.out.println("-----------------------------------");
+
+	//Math.sqrt = Retorna a raiz quadrada de um numero
+        System.out.println(Math.sqrt(9));   // Retorna 3
+        System.out.println(Math.sqrt(25));  // Retorna 5
+        System.out.println(Math.sqrt(-16)); // Retorna NaN

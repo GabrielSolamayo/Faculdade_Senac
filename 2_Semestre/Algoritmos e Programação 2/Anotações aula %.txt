@@ -1,0 +1,23 @@
+Encapsulamento		Moderador	TR		NM
+
+MAV			MA		void		bubblesort
+					int
+private			static		double
+public					objeto
+default
+protect
+
+
+
+- Função retorna;
+- Procedimento não retorna;
+
+Static serve para chamala direto na classe.
+
+PPPV
+Public void (int a, int b)
+//passagem de paramentro por VALOR
+
+PPPR
+Public void (int vetor[])
+//passagem de paramentro por REFERENCIA

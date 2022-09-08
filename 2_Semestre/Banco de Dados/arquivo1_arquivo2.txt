@@ -1,0 +1,78 @@
+select * from pedido;
+select * from cliente;
+select * from pedido,cliente where pedido.fk_cod_cli = cliente.cod_cli;
+select pedido.num_pedido,cliente.nome_cliente from pedido,cliente where pedido.fk_cod_cli = cliente.cod_cli;
+select * from pedido,cliente,vendedor where pedido.fk_cod_cli = cliente.cod_cli 
+                                      and pedido.fk_cod_vend = vendedor.cod_vend;
+select pedido.num_pedido,cliente.nome_cliente,vendedor.nome_vend                         
+                                     from pedido,cliente,vendedor 
+                                     where pedido.fk_cod_cli = cliente.cod_cli 
+                                      and pedido.fk_cod_vend = vendedor.cod_vend;
+select A.num_pedido,B.nome_cliente,C.nome_vend                         
+                                     from pedido as A,cliente B,vendedor C
+                                     where A.fk_cod_cli = B.cod_cli 
+                                      and A.fk_cod_vend = C.cod_vend;
+select A.num_pedido as 'Numero',B.nome_cliente as 'Cliente',C.nome_vend  as 'Vendedor'                        
+                                     from pedido as A,cliente as B,vendedor as C
+                                     where A.fk_cod_cli = B.cod_cli 
+                                      and A.fk_cod_vend = C.cod_vend;
+create table arquivo1 (
+     codigo int not null auto_increment primary key,
+     nome varchar(30)
+);
+create table arquivo2 (
+     codigo int not null auto_increment primary key,
+     nome varchar(30)
+);
+insert into arquivo1 (nome) values ('Fernanda');
+insert into arquivo1 (nome) values ('Josefa');
+insert into arquivo1 (nome) values ('Luiz');
+insert into arquivo1 (nome) values ('Fernando');
+insert into arquivo1 (nome) values ('Romulo');
+select * from arquivo1;
+insert into arquivo2 (nome) values ('Carlos');
+insert into arquivo2 (nome) values ('Manoel');
+insert into arquivo2 (nome) values ('Luiz');
+insert into arquivo2 (nome) values ('Fernando');
+insert into arquivo2 (nome) values ('Romulo');
+select * from arquivo2;
+
+
+select * from customer inner join address on customer.address_id = address.address_id;
+
+
+
+select * from actor;
+select * from customer;
+select * from address;
+select * from customer
+         inner join address using (address_id);
+select * from customer
+         inner join address using (address_id)
+         inner join city on address.city_id = city.city_id;
+select * from customer
+         inner join address using (address_id)
+         inner join city on address.city_id = city.city_id
+         inner join country on city.country_id = country.country_id;
+----------------------------------------------------
+select * from rental;
+/* quantas locações a cliente Mary realizou */
+select count(*) from rental
+            inner join customer on rental.customer_id = customer.customer_id
+            where customer.first_name like 'Mary';
+
+/* Quais os titulos dos filmes assistidos por Mary */
+select * from rental
+            inner join customer on rental.customer_id = customer.customer_id
+            where customer.first_name like 'Mary';
+select * from inventory;
+select * from film;
+select film.title from rental
+            inner join customer on rental.customer_id = customer.customer_id
+            inner join inventory on rental.inventory_id = inventory.inventory_id
+            inner join film on inventory.film_id = film.film_id
+            where customer.first_name like 'Mary';
+
+/* Quantos dolares a Mary ja gastou nesta locadora */
+
+/* Quais são os 5 primeiros generos de filmes favoritos da Mary */

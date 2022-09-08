@@ -1,0 +1,179 @@
+create table ambulatorio (
+nroa int not null auto_increment,
+andar int(3) not null,
+capacidade smallint(3) null,
+primary key (nroa)
+);
+
+create table medico (
+        codm int primary key auto_increment,
+        nome varchar(40) not null, 
+        idade smallint not null, 
+        especialidade char(20), 
+        cpf varchar(11) unique, 
+        cidade varchar(30), 
+        fk_nroa int,
+        foreign key (fk_nroa) references ambulatorio (nroa)      
+);
+
+
+create table paciente (
+codp int not null auto_increment primary key,
+nome varchar(40) not null,
+idade smallint(3),
+cidade char(30),
+CPF varchar(11) UNIQUE,
+doenca varchar(40) not null
+);
+
+create table funcionario (
+        codf int primary key,
+        nome varchar(40) not null,
+        idade smallint not null,
+        cpf varchar(11) unique,
+        cidade varchar(30),
+        salario numeric(10,2),
+        cargo varchar(20)
+);
+
+create table consulta (
+num_consulta int not null auto_increment primary key,
+datas date,
+hora time,  
+fk_codm int,
+fk_codp int, 
+foreign key (fk_codm) references medico(codm),
+foreign key (fk_codp) references paciente(codp)
+);
+
+
+select * from ambulatorio;
+desc ambulatorio;
+insert into ambulatorio (andar,capacidade) 
+values(1,30),
+      (1,50),
+      (2,40),
+      (2,25),
+      (2,55);
+//-------------------------------------------------------------------------
+
+select * from medico;
+desc medico;
+insert into medico (nome,idade,especialidade,cpf,cidade,fk_nroa)
+values('Joao',40,'Ortopedia','10000100000','Florianopolis',1),
+      ('Maria',42,'Traumatologia','10000110000','Blumenau',2),
+      ('Pedro',51,'Pediatria','11000100000','São josé',2),
+      ('Carlos',28,'Ortopedia','11000110000','Joinville',4),
+      ('Marcia',33,'Neurologia','11000111000','Biguacu',3);
+
+//----------------------------------------------------------------------------
+
+desc paciente;
+select * from paciente;
+insert into paciente (nome, idade, cidade, cpf, doenca) 
+              values ('Ana', 20, 'Florianopolis', 20000200000, 'gripe'),
+                     ('Paulo', 24, 'Palhoca', 20000220000, 'fratura'),
+                     ('Lucia', 30, 'Biguacu', 22000200000, 'tendinite'),
+                     ('Carlos', 28, 'Joinville', 11000110000, 'sarampo');
+
+//------------------------------------------------------------------------------
+
+desc funcionario;
+select * from funcionario;
+insert into funcionario (codf,nome,idade,CPF,cidade,salario)
+values (1,'Rita',32,'20000100000','Sao jose',1200.00),
+       (2,'Maria',55,'30000110000','Palhoca',1220.00),
+       (3,'Caio',45,'41000100000','Florianopolis',1100.00),
+       (4,'Carlos',44,'51000110000','Florianopolis,',1200.00),
+       (5,'Paula',33,'61000111000','Florianopolis',2500.00);
+
+//-------------------------------------------------------------------------------
+
+desc consulta;
+select * from consulta;
+insert into consulta (fk_codm,fk_codp,datas,hora)
+            values (1,1,"2006-06-12","14:00:00"),
+                   (1,4,"2006-07-13","10:00:00"),
+                   (2,1,"2006-06-13","09:00:00"),
+                   (2,2,"2006-06-13","11:00:00"),
+                   (2,3,"2006-06-14","14:00:00"),
+                   (2,4,"2006-06-14","17:00:00"),
+                   (3,1,"2006-06-19","18:00:00"),
+                   (3,3,"2006-06-12","10:00:00"),
+                   (3,4,"2006-06-19","13:00:00"),
+                   (4,4,"2006-06-20","13:00:00"),
+                   (4,4,"2006-06-22","19:30:00");
+
+//-------------------------------------------------------------------------------
+
+alter table funcionario drop column cargo;
+update consulta set hora = addtime(hora,'01:30:00')
+                 where num_consulta = 6;
+update consulta set hora = addtime(hora,'-30:00')
+                 where num_consulta = 5;
+update consulta set hora = addtime(hora,'01:30:00')
+                 where num_consulta = 6;
+update consulta set hora = subtime(hora,'00:30:00')
+                 where num_consulta = 6;
+
+--------------------------------------------------------------------------------
+--1) Pedro mudou de cidade para Ilhota;
+desc paciente;
+select * from paciente;
+update paciente set cidade = 'Ilhota' where codp = 2;
+
+
+--2) A consulta do médico 1 com o paciente 4 passou para às
+-- 12:00 horas do dia 4 de Julho de 2006
+desc consulta;
+select * from consulta;
+update consulta set datas= '2006-07-04', hora = '12:00:00' where num_consulta = 2;
+
+
+--3) A paciente Ana fez aniversário e sua doença agora é cancer;
+desc paciente;
+select * from paciente;
+update paciente set idade= idade +1 , doenca= 'cancer' where codp = 1;
+
+--4) A consulta do médico Pedro (codf = 3) com o paciente
+-- Carlos (codf = 4) passou para uma hora e meia depois
+desc consulta;
+select * from consulta;
+update consulta set hora= addtime(hora,'01:30:00') where num_consulta = 9;
+
+--5) O funcionário Carlos (codf = 4) deixou a clínica
+desc funcionario;
+select * from funcionario;
+delete from funcionario where codf = 4;
+
+--6) As consultas marcadas após as 19 horas foram canceladas
+desc consulta;
+select * from consulta;
+
+
+--7)
+
+
+
+
+--8)) Os médicos que residem em Biguacu e Palhoca deixaram
+--    a clínica
+desc medico;
+select * from medico;
+delete from medico where cidade = 'Biguacu' or cidade = 'Palhoca';
+--                 where cidade = in ('Biguacu', 'Palhoca');
+
+
+select cidade from paciente;
+--Listar os nomes dos medicos que moram nas mesmas cidade 
+select * from medico where cidade in(select cidade from paciente);
+
+--o 'count' irá contar quantas linhas;
+select count(*) from paciente where idade >=30;
+--O 'TOTAL' é o nome para descrever a tabela;
+select count(*)as TOTAL from paciente where idade >=30;
+--O 'sum' irá somar o salario de funcionario;
+select sum(salario) as 'TOTAL SALARIO' from funcionario;
+
+
+

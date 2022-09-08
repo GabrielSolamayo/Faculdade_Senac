@@ -1,0 +1,101 @@
+drop table veiculo;
+create table veiculo(
+    id_veiculo int primary key not null auto_increment,
+    tipo_carro varchar(15) not null,
+    placa_carro varchar(9) not null,
+    qntd_locacao int not null
+);
+
+create table cliente(
+    id_cliente int primary key not null auto_increment,
+    nome_cli varchar(40) not null,
+    cpf char(11) not null,
+    telefone int (9) null,
+    cidade varchar (30) null,
+    pacote varchar (14) not null
+);
+
+create table locacao(
+    id_locacao int primary key not null auto_increment,
+    data_agenda date not null,
+    custo numeric(10,2) not null,
+    fk_id_veiculo int,
+    fk_id_cliente int,
+    foreign key (fk_id_veiculo) references veiculo(id_veiculo),
+    foreign key (fk_id_cliente) references cliente(id_cliente)
+);
+
+-- --------------------------------------------------------------------
+
+desc veiculo;
+select * from veiculo;
+insert into veiculo (tipo_carro,placa_carro,qntd_locacao)
+              values('luxo', 'ABC123', 6),
+                    ('luxo', 'CBA321', 4),
+                    ('economico', 'DEF456', 10),
+                    ('economico', 'FED654', 9),
+                    ('economico', 'GHI789', 12),
+                    ('luxo', 'IHG987', 10);
+
+--------------------------------------------------------------------------------
+
+desc cliente;
+select * from cliente;
+insert into cliente (nome_cli,cpf,telefone,cidade,pacote)
+             values ('Pedro Amoedo', '10000100000', 934527851, 'São Paulo', 'Luxo'),
+                    ('Isabel da Silva', '10000100111', 943557659, 'Rio de Janeiro', 'Luxo'),
+                    ('Carlos Enrique', '10010100100', 939528856, 'São Paulo', 'Economico'),
+                    ('João Santos', '10110100010', 996528851, 'São Paulo', 'Economico'),
+                    ('Bianca Costa', '01100100000', 932527491, 'Rio de Janeiro', 'Luxo'),
+                    ('Camila de Ramos', '10100100010', 924727839, 'Rio de Janeiro', 'Economico');
+
+----------------------------------------------------------------------------------
+drop table locacao;
+desc locacao;
+select * from locacao;
+insert into locacao (data_agenda, custo, fk_id_veiculo, fk_id_cliente)
+             values ("2020-06-12", 70.00, 1, 1),
+                    ("2020-06-12", 70.00, 2, 3),
+                    ("2020-07-25", 70.00, 3, 4),
+                    ("2020-08-25", 70.00, 4, 2),
+                    ("2020-11-04", 70.00, 6, 5),
+                    ("2021-11-03", 70.00, 5, 6);
+
+---------------------------------------------------------------------------------
+
+-- A) Gere os Clientes que locaram veículos no dia
+    select * from locacao;
+    select * from locacao where id_cliente in(select data_agenda = "2020-06-12"  from locacao);
+    select data_agenda from locacao;
+
+-- B) Gere o Saldo do dia dos carros alugados, sabendo-se que a diária custa R$ 70,00
+    select sum(custo) as 'TOTAL_DO_DIA' from locacao where data_agenda = "2020-06-12"; 
+
+-- C) Qual o total de veículos locados agrupados por tipo.
+    desc veiculo;
+    select * from veiculo;
+    select count(*)as TOTAL_ECONOMICO from locacao where tipo_carro = 'economico';
+    select count(*)as TOTAL_LUXO from veiculo where tipo_carro = 'luxo';
+
+-- D) Quantidade de veículos locados no mês.
+    select count(*)as QUANTIDADE_MES from locacao where data_agenda = "2020"; 
+-- E) Listagem dos clientes em ordem alfabética, agrupados por município.
+-- F) Listagem dos veículos existentes e a quantidade de locação realizada por veiculo.
+    select * from veiculo;
+    select id_veiculo, qntd_locacao from veiculo;
+
+-- G) Comando para transferir um cliente de pacote para outro.
+    select * from cliente;
+    update cliente set pacote = 'Economico' where nome_cli = 'Pedro Amoedo'; 
+
+-- H) Excluir uma locação cancelada
+    select * from locacao;
+    delete from locacao where id_locacao = 1;
+
+-- I) Alterar a tabela cliente para incluir um campo chamado bandeira do cartão
+    desc cliente;
+    alter table cliente add bandeira_cartao varchar(20) not null; 
+
+-- J) Listagem das locações do dia, com o nome do cliente, e informações do veículo
+    
+                    

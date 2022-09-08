@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div>
+        <title>“Prova programação Web – N1”</title>
+        <h2>"Avaliação em Duplas"</h2>
+        <p>
+           Olá caro usuario:<input type="String" name="nome_usuario" id="nome_usuario">
+            ID:<input type="numeric" name="ID_usuario" id="ID_usuario">
+        </p>
+    </div>
+    <p>
+        <input type="button" value="Ação" onclick="acao()">
+    </p>
+    <div id="mensagem"></div>
+    <script>
+        function mensagem(){
+        var data = new Date()
+        var hora = data.getHours()
+        var mensagem=document.getElementById("mensagem")
+        //hora = 15
+        if(hora <= 12){  
+            //alert('Bom dia')
+            mensagem.innerText='Bom Dia'
+        }else if(hora>= 18){
+            //alert('Boa Noite')
+            mensagem.innerText='Boa Noite'
+        }else{
+            //alert('Boa Tarde')
+            mensagem.innerText='Boa Tarde'
+        }
+    }
+    mensagem();
+    </script>
+    <div id="Imagem">
+        <img id="im" src="boasvindas.jpg">
+    </div>
+    <script>
+        function acao(){
+            var data = new Date()
+            var hora = data.getHours()
+            //hora =15
+            if(hora <= 12){  
+            im.src="bomdia.jpg"
+            }else if(hora>= 18){
+            im.src="boanoite.png"
+            }else{
+            im.src="boatarde.jpg"
+            }
+        }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      font: normal 18pt Arial
+    }
+    input {
+      font: normal 18pt Arial;
+      width: 100px;
+    }
+    div#res{
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Somando Valor</h1>
+  <input type="number" name="txtn1" id="txtn1">
+  <input type="number" name="txtn2" id="txtn2">
+  <input type="number" name="txtn3" id="txtn3">
+  <p>
+  <input type="button" value="Somar" onclick="somar()">
+  </p>
+  <div id="res">Aguardando Resultado</div>
+  <div id="info"></div>
+  <div id="Imagem"><img id="im" src="">
+  </div>
+  <script>
+    function somar(){
+      //var img = window.document.getElementById("im")
+      var data = new Date()
+      var hora = data.getHours()
+      var minuto = data.getMinutes()
+      var segundo = data.getSeconds()
+      var tn1=document.getElementById("txtn1")
+      var tn2=document.querySelector("input#txtn2")
+      var tn3=document.getElementById("txtn3")
+      var res=document.getElementById("res")
+      var n1 = Number(tn1.value)
+      var n2 = Number(tn2.value)
+      var n3 = Number(tn3.value)
+      var s = n1 + n2 + n3
+      res.innerText=`A Soma entre ${n1} , ${n2} e ${n3} é igual a: ${s} `
+      //hora = 23
+      if(hora <= 12){  
+        //info.innerText = 'Bom Dia'
+        im.src="bomdia.jpg"
+      }else if(hora>= 18){
+        //info.innerText = 'Boa Noite'
+        im.src="boanoite.png"
+      }else{
+        //info.innerText = 'Boa Tarde'
+        im.src="boatarde.jpg"
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+Algoritmos e Programação - Aula 3
+prof Marcos Monteiro
+01/04/2022
+
+			
+
+a = 7; //atribuindo o valor 7
+
+a == 7; //comparando de 'a' é igual a 7; (true)
+
+a != 7; // dizendo que 'a' é diferente de 7; (false)b
+
+boolean b = false;
+!(b) = true; // jogos de sinais;
+
+No comando 'if' se por acaso a condição so conter uma linha não é necessario ter chaves ( {} ). Porém não é um bom "hábito".
+
