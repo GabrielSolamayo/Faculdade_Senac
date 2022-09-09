@@ -23,7 +23,7 @@ public class Funcionario {
     }
     
     
-    
+ 
     
     public String getNome() {
         return nome;
@@ -57,4 +57,5 @@ public class Funcionario {
         this.endereco = endereco;
     }
 
+    
 }
