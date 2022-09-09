@@ -15,9 +15,17 @@ public class Conta_Especial extends Conta{
 		super(saldo, numero, titular, agencia);
 		this.limite = limite;
 	}
-
-	public void imprimeDados() {
+	public Conta_Especial(){
 		
 	}
 	
+	public void imprimeDados() {
+		System.out.println("==== CONTA ESPECIAL ====\n");
+		super.imprimeDados();
+		System.out.printf("Limite atual: %.2fR$\n",getLimite());
+	}
+	
+	public void saque() {
+		
+	}
 }

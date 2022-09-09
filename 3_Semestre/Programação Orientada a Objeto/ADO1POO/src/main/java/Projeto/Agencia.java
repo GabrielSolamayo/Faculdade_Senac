@@ -32,8 +32,7 @@ public class Agencia {
 	}
 	
 	public void imprimeDados() {
-		System.out.println("======== AGENCIA ========");
-		System.out.println("Número: " + this.getNumero());
+		System.out.println("Número da Agencia: " +getNumero());
 		banco.imprimeDados();
 	}
 }

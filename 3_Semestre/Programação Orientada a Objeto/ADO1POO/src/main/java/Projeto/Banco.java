@@ -32,7 +32,8 @@ public class Banco {
 	}
 	
 	public void imprimeDados() {
-		
+		System.out.println("Nome do Banco: "+getNome());
+		System.out.println("Número do Banco: "+getNumero());
 	}
 
 

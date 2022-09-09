@@ -31,7 +31,8 @@ public class Cliente {
 		this.cpf = cpf;
 	}
 	
-	public static void imprimeDados() {
-		
+	public void imprimeDados() {
+		System.out.println("Nome: "+getNome());
+		System.out.println("CPF: "+getCpf());
 	}
 }

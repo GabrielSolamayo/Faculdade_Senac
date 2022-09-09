@@ -69,13 +69,10 @@ public class Conta {
 	
 	
 	public void imprimeDados() {
-//		System.out.println("======================================");
-//        agencia.imprimeDados();
-//        System.out.println("Numero da conta: " + numero);
-//        titular.imprimeDados();
-//        System.out.println("Saldo  : R$" + saldo);
-//        System.out.println("CPMF devido: R$" + acumuladorCPMF);
-//        System.out.println("========================================");
+		System.out.printf("Saldo: %.2fR$\n",getSaldo());
+		System.out.println("Número da Conta: "+getNumero());
+		System.out.println("Nome do Titular: "+titular.getNome());
+		System.out.println("CPF do Titular: "+titular.getCpf());
+		agencia.imprimeDados();
 	}
-	
 }
