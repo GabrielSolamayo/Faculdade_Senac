@@ -2,16 +2,19 @@ package Projeto;
 
 public class TesteHeranca {
 	public static void main(String[] args) {
-		
+		 //Banco;
 		Banco banco = new Banco("Santander", 01);
 		
+		//Agencias;
 		Agencia agencia = new Agencia("001", banco);
 		Agencia agencia2 = new Agencia("002", banco);
 		Agencia agencia3 = new Agencia("003", banco);
 		
+		//Clientes;
 		Cliente cliente1 = new Cliente("Gabriel Enrique", "123.456.789-00");
 		Cliente cliente2 = new Cliente("Jorge Alberto", "123.456.789-10");
 		Cliente cliente3 = new Cliente("José Benjamin", "123.456.789-20");
+		
 		
 		Conta cont = new Conta(200.0, "101", cliente1, agencia);
 		
@@ -22,15 +25,15 @@ public class TesteHeranca {
 		
 		//Imprimindo Dados das Contas;
 		contesp.imprimeDados();
+		contesp.saque(1500);
 		
-		//System.out.println();
 		//contesp2.imprimeDados();
 		//System.out.println();
 		
 		
 		
 		//contpop.imprimeDados();	
-		//contpop.saque(900);
+		//contpop.saque(100);
 		//System.out.println();
 	}
 }

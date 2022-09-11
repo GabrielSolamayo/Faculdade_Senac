@@ -25,7 +25,31 @@ public class Conta_Especial extends Conta{
 		System.out.printf("Limite atual: %.2fR$\n",getLimite());
 	}
 	
-	public void saque() {
+	public void saque(double valor) {
+		double sobra = 0;
+		System.out.println("-------------------------------");
+		System.out.printf("  Valor do Saque: %.2fR$\n",valor);
+		System.out.println("-------------------------------");
+		if(valor > (getSaldo() + getLimite())) {
+			System.out.println();
+			System.out.println("!!      Saldo Excedido        !!");
+			System.out.println("!!  Retirando do crédito ...  !!\n");
+			System.out.println("!! Saldo do crédito excedido  !!");
+			System.out.println("!!    Saque não realizado     !!\n");
+		}else if((getSaldo() - valor) < 0) {
+			System.out.println();
+			System.out.println("!!     Saldo Excedido      !!");
+			System.out.println("!! Retirando do crédito... !!\n");
+			System.out.println("Atualizando ....");
+			sobra = (valor - getSaldo());
+			setLimite(getLimite()-sobra);
+			setSaldo(0);
+			imprimeDados();
+		}else {
+		System.out.println("Atualizando ....\n");
+		setSaldo(getSaldo() - valor);
+		}
+		
 		
 	}
 }

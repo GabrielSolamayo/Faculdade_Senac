@@ -30,6 +30,9 @@ public class Conta_Poupanca extends Conta{
 	}
 	
 	public void saque(double valor) {
+		System.out.println("-------------------------------");
+		System.out.println("  Valor do Saque: "+valor+"R$");
+		System.out.println("-------------------------------");
 		if((getSaldo() - valor) < 0) {
 			System.out.println("!!   Saldo Excedido    !!");
 			System.out.println("!! Saque não realizado !!\n");
@@ -39,7 +42,9 @@ public class Conta_Poupanca extends Conta{
 			System.out.println();
 			imprimeDados();
 		}else {
+		System.out.println("Atualizando ....\n");
 		setSaldo(getSaldo() - valor);
+		imprimeDados();
 		}
 	}
 }
