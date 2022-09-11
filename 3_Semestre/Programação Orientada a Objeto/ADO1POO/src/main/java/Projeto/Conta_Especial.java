@@ -48,6 +48,7 @@ public class Conta_Especial extends Conta{
 		}else {
 		System.out.println("Atualizando ....\n");
 		setSaldo(getSaldo() - valor);
+		imprimeDados();
 		}
 		
 		

@@ -25,7 +25,7 @@ public class TesteHeranca {
 		
 		//Imprimindo Dados das Contas;
 		contesp.imprimeDados();
-		contesp.saque(1500);
+		contesp.saque(100);
 		
 		//contesp2.imprimeDados();
 		//System.out.println();
