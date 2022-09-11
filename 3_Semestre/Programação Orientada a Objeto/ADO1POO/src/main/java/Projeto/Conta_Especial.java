@@ -19,6 +19,7 @@ public class Conta_Especial extends Conta{
 		
 	}
 	
+	
 	public void imprimeDados() {
 		System.out.println("==== CONTA ESPECIAL ====\n");
 		super.imprimeDados();
@@ -27,27 +28,31 @@ public class Conta_Especial extends Conta{
 	
 	public void saque(double valor) {
 		double sobra = 0;
+		double descTX = (valor / 100)*(super.getTaxaCPMF()*100);
+		
 		System.out.println("-------------------------------");
 		System.out.printf("  Valor do Saque: %.2fR$\n",valor);
 		System.out.println("-------------------------------");
-		if(valor > (getSaldo() + getLimite())) {
+		if(valor > (getSaldo() + getLimite() + descTX)) {
 			System.out.println();
 			System.out.println("!!      Saldo Excedido        !!");
 			System.out.println("!!  Retirando do crédito ...  !!\n");
 			System.out.println("!! Saldo do crédito excedido  !!");
 			System.out.println("!!    Saque não realizado     !!\n");
-		}else if((getSaldo() - valor) < 0) {
+		}else if(((getSaldo() - valor) - descTX) < 0) {
 			System.out.println();
 			System.out.println("!!     Saldo Excedido      !!");
 			System.out.println("!! Retirando do crédito... !!\n");
-			System.out.println("Atualizando ....");
+			System.out.printf("--- Taxa CPMF aplicada : %.2fR$ --- \n",descTX);
+			System.out.println("Atualizando ....\n");
 			sobra = (valor - getSaldo());
-			setLimite(getLimite()-sobra);
+			setLimite((getLimite()-sobra) - descTX);
 			setSaldo(0);
 			imprimeDados();
 		}else {
+		System.out.printf("--- Taxa CPMF aplicada : %.2fR$ --- \n",descTX);
 		System.out.println("Atualizando ....\n");
-		setSaldo(getSaldo() - valor);
+		setSaldo((getSaldo() - valor) - descTX);
 		imprimeDados();
 		}
 		

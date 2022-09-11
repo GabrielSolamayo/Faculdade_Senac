@@ -25,15 +25,12 @@ public class TesteHeranca {
 		
 		//Imprimindo Dados das Contas;
 		contesp.imprimeDados();
-		contesp.saque(100);
+		contesp.saque(800);
 		
-		//contesp2.imprimeDados();
-		//System.out.println();
-		
-		
-		
-		//contpop.imprimeDados();	
-		//contpop.saque(100);
-		//System.out.println();
+		contesp2.imprimeDados();
+		contesp2.saque(1100);
+				
+		contpop.imprimeDados();	
+		contpop.saque(900);
 	}
 }
