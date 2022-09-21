@@ -11,9 +11,8 @@ public class Livros {
 	public Livros() {
 		
 	}
-	public Livros(int id, String autor, String titulo, double preco) {
+	public Livros( String autor, String titulo, double preco) {
 		super();
-		this.id = id;
 		this.autor = autor;
 		this.titulo = titulo;
 		this.preco = preco;
@@ -47,6 +46,6 @@ public class Livros {
 	
 	@Override
     public String toString() {
-        return  ""+ "ID = " + id + " | Autor = " + autor + " | Nome do Livro = " + titulo + "";
+        return  ""+ "Livro = " + titulo + " | ID = " + id+ " | Autor = " + autor + "";
     }
 }
