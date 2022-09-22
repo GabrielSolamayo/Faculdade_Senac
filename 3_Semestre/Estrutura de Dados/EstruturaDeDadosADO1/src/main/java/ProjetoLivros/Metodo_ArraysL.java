@@ -9,7 +9,7 @@ public class Metodo_ArraysL {
 	
 	public static int idInicial() {
 		Random rd = new Random();
-		int vi = 0, vf = 15;
+		int vi = 0, vf = 30;
 		int b = vi+rd.nextInt(vf-vi);
 		return b;
 		
@@ -17,10 +17,11 @@ public class Metodo_ArraysL {
 	
 	public static int idAleatorio(Livros l[]) {
 		Random rd = new Random();
-		int vi = 0, vf = 15, a = 0, cont = 0;
+		int vi = 0, vf = 30, a = 0;
 		boolean vb = false;
 		while(vb == false) {
-			a = vi+rd.nextInt(vf-vi);
+                        int cont = 0;
+			 a = vi+rd.nextInt(vf-vi);
 			for (int i = 0; i < indiceAtual; i++) {
 				if(a != lista[i].getId()) {
 					cont++;
@@ -28,10 +29,9 @@ public class Metodo_ArraysL {
 			}
 			if(cont == indiceAtual) {
 				vb = true;
-				return a;
 			}
 		}
-		return -1;
+		return a;
 	}
 	
 	public static void inserir(Livros l){
@@ -127,4 +127,27 @@ public class Metodo_ArraysL {
 		System.out.println("Livro nao encontrado");
 		return null;
 	}
+        
+        public static int pesquisarID(int id){
+            for (int i = 0; i < indiceAtual; i++) {
+                if(id == lista[i].getId()){
+                    return i;
+                }
+            }
+            return -1;
+        }
+        
+        public static boolean remover (int id){
+        int indicePesq = pesquisarID(id);
+        if(indicePesq != -1){
+            for (int i = indicePesq; i < indiceAtual-1; i++) {
+                lista[i] = lista[i+1];
+            }
+            indiceAtual--;
+            imprimir();
+            return true;
+        }
+        System.out.println("!!! ID Nao Encontrado !!!");
+        return false;
+    }
 }

@@ -22,7 +22,7 @@ public class ArrayObjetos {
         System.out.println("");
         System.out.println("=== REMOVENDO... ===");
         System.out.println("");
-        boolean verifica = MetodoArray.remover(2);
+        boolean verifica = MetodoArray.remover(7);
         MetodoArray.remover(1);
         if(verifica){
             MetodoArray.imprimir();
@@ -37,7 +37,7 @@ public class ArrayObjetos {
             System.out.println("");
             MetodoArray.imprimir();
         }else{
-            System.out.println("ID não encontrado ;-;");
+            System.out.println("ID nao encontrado ;-;");
         }
     }
 }
