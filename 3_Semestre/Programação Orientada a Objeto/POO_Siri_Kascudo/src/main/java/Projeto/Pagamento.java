@@ -10,4 +10,6 @@ package Projeto;
  */
 public interface Pagamento {
     
+    public double valorDoPrato();
+    
 }

@@ -22,7 +22,8 @@ public class Ingredientes {
                     molhoDeTomate = 10,
                     carneSuina = 20,
                     cenoura = 20;
-
+     
+     
     public double getArroz() {
         return arroz;
     }
