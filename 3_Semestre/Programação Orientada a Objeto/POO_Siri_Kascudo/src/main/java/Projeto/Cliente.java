@@ -6,7 +6,7 @@ package Projeto;
 
 /**
  *
- * @author solam
+ * @author gabriel.esmunoz
  */
 public class Cliente {
     private String Nome, CPF;
