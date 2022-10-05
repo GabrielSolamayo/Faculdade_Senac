@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package lista;
+package Lista_Simplesmente_Encadeada;
 
 /**
  *
@@ -21,6 +21,9 @@ public class Pet {
         this.idade = idade;
     }
     public Pet() {
+    }
+    public Pet(String nome){
+        this.nome = nome;
     }
     
     
@@ -52,7 +55,7 @@ public class Pet {
     @Override
     public String toString() {
         return "Pet: " + " Especie = " + especie + "\n"
-                + "Nome = " + nome + "| Idade = " + idade + "";
+                + "Nome = " + nome + "| Idade = " + idade + "\n";
     }
     
     
