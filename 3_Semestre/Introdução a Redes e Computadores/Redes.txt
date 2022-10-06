@@ -1,0 +1,29 @@
+Nuvem privada
+Vamos começar com uma nuvem privada. Uma nuvem privada é, de certa forma, a evolução natural de um datacenter corporativo. Ela é uma nuvem (que fornece serviços de TI pela Internet) usada por uma única entidade. A nuvem privada fornece um controle muito maior para a empresa e o departamento de TI. No entanto, ela também tem mais custos e menos benefícios em relação a uma implantação de nuvem pública. Por fim, uma nuvem privada pode ser hospedada em seu datacenter local. Ela também pode ser hospedada em um datacenter dedicado externo, até mesmo por terceiros que tenham dedicado esse datacenter à sua empresa.
+
+Nuvem híbrida
+Uma nuvem híbrida é um ambiente de computação que usa nuvens públicas e privadas em um ambiente interconectado. Um ambiente de nuvem híbrida pode ser usado para permitir que uma nuvem privada escale para atender a uma demanda maior temporária implantando recursos de nuvem pública. A nuvem híbrida pode ser usada para fornecer uma camada adicional de segurança. Por exemplo, os usuários podem escolher com flexibilidade quais serviços manter na nuvem pública e quais implantar na infraestrutura de nuvem privada.
+
+Nuvem pública
+Uma nuvem pública é criada, controlada e mantida por um provedor de nuvem de terceiros. Com uma nuvem pública, qualquer pessoa que queira comprar serviços de nuvem pode acessar e usar os recursos. A disponibilidade pública geral é uma diferença fundamental entre nuvens públicas e privadas.
+
+
+
+
+Gerenciamento da nuvem
+O gerenciamento da nuvem diz respeito a gerenciar seus recursos de nuvem. Na nuvem, você pode:
+
+Escalar automaticamente a implantação de recursos com base na necessidade.
+Implantar recursos com base em um modelo pré-configurado, removendo a necessidade de configuração manual.
+Monitorar a integridade dos recursos e substituir automaticamente os recursos com falha.
+Receber alertas automáticos com base em métricas configuradas, de modo a ficar ciente do desempenho em tempo real.
+
+
+
+Gerenciamento na nuvem
+O gerenciamento na nuvem diz respeito à maneira de gerenciar seu ambiente de nuvem e seus recursos. Você pode gerenciá-los:
+
+Por meio de um portal da Web.
+Usando uma interface de linha de comando.
+Usando APIs.
+Usando o PowerShell.
