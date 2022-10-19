@@ -18,14 +18,11 @@ public class UseLista {
         ListaSimples.inserir(new Produto("Cif", "Desifetante", 6.0, 4));
         ListaSimples.inserir(new Produto("Destac", "Agua Sanitária", 5.0, 1));
         
-        ListaSimples.exibir();
+        ListaSimples.exibirNF();
         System.out.println("");
         
         
-        
-        double sla = ListaSimples.itemGratis(3, 4.0);
-        System.out.println(sla);
-        //ListaSimples.remover(5000);
-        //ListaSimples.exibir();
+        ListaSimples.remover(5000);
+        ListaSimples.exibirNF();
     }
 }

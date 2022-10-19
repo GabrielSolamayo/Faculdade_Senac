@@ -93,12 +93,9 @@ public class Produto {
 
     @Override
     public String toString() {
-    	if(marca.equalsIgnoreCase("Mr roboto")) {
-    		return "" + "ID: "+id+ "| Marca = " + marca + " | Categoria = " + categoria + " | Preco = R$" + preco + " | Quantidade = " + quantidade + "";
-    	}
-        
+    		 return "" + "ID: "+id+ "| Marca = " + marca + " | Categoria = " + categoria + " | Preco = R$" + preco + " | Quantidade = " + quantidade + "";
     }
     
+    }
     
-    
-}
+  

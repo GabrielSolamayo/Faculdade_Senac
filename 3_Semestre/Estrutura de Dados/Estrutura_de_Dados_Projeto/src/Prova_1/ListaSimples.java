@@ -6,6 +6,7 @@ package Prova_1;
 
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author gabriel.esmunoz
@@ -26,12 +27,38 @@ public class ListaSimples {
         }
     }
 
-    public static void exibir() {
+    public static void exibirNF() {
+    	
         Elemento e = inicio;
-        while (e != null) {
-            System.out.println(e.getObjeto());
-            e = e.getProx();
+        double total  = 0;
+        while (e != null ) {
+        	Produto prodPesq;
+        	prodPesq = (Produto)e.getObjeto();
+        	if(prodPesq.getMarca().equalsIgnoreCase("Mr. Musculo") && prodPesq.getQuantidade() > 2) {
+        		System.out.print(e.getObjeto());
+        		System.out.println(" | Desconto de 5% aplicado | Levando 1 item gratis");
+        		total = total + prodPesq.getPreco();
+                e = e.getProx();
+        	}
+        	else if(prodPesq.getQuantidade() >= 3){
+        		System.out.print(e.getObjeto());
+        		System.out.println(" | Levando 1 item gratis");
+        		total = total + prodPesq.getPreco();
+                e = e.getProx();
+        	}else if(prodPesq.getMarca().equalsIgnoreCase("Mr. Musculo")) {
+        		System.out.print(e.getObjeto());
+        		System.out.println(" | Desconto de 5% aplicado");
+        		total = total + prodPesq.getPreco();
+                e = e.getProx();
+        	}else {
+	            System.out.println(e.getObjeto());
+	            total = total + prodPesq.getPreco();
+	            e = e.getProx();
+        	}
         }
+        System.out.println("-----------------------------------------\n"
+        				 + "       TOTAL A PAGAR = R$"+total+"\n"
+        				 + "-----------------------------------------");
     }
 
     private static Object[] pesquisar(Produto prod) {
