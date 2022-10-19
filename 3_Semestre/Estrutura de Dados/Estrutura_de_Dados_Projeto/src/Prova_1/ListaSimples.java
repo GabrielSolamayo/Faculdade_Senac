@@ -77,52 +77,16 @@ public class ListaSimples {
         return false;
     }
 
-    public static void comprar() {
-        Produto produto = new Produto();
-        String x[] = new String[10];
-        double y[] = new double[10];
-        int cont = 0;
-        boolean ver = false;
-        while (ver != true) {
-            String prod = JOptionPane.showInputDialog("Selecione o produto: ");
-            int quant = Integer.parseInt(JOptionPane.showInputDialog("Digite a quantidade (Pegue mais de 3 e leve 1 de graça): "));
-            if (itemGratis(quant)) {
-                double valor = produto.getPreco() * (quant - 1);
-                x[cont] = prod;
-                y[cont] = valor;
-                ProdutodG();
-                cont++;
-            } else {
-                double valor = produto.getPreco() * quant;
-                x[cont] = prod;
-                y[cont] = valor;
-                cont++;
-            }
-            String a = JOptionPane.showInputDialog("Deseja continuar comprando? (Y/N)");
-            if (a.equalsIgnoreCase("No") || a.equalsIgnoreCase("N")) {
-                ver = true;
-            }
+    public static double itemGratis(int quant, double preco){
+    	double valor;
+        if(quant > 2){
+             valor = preco * (quant - 1);
+            return valor;
+        }else {
+        	 valor = preco * quant;
+        	return valor;
         }
     }
 
-    public static boolean itemGratis(int quant){
-        if(quant >= 3){
-            return true;
-        }
-        return false;
-    }
     
-    public static void NotaF() {
-        System.out.println("------- NOTA FISCAL -------");
-        ProdutodG();
-        ProdutosN();
-    }
-    
-    public static void ProdutodG(){
-        
-    }
-    
-    public static void ProdutosN(){
-        
-    }
 }

@@ -5,6 +5,11 @@
 package Prova_1;
 
 /**
+ * a) Atributos: marca (String), categoria (String), preco (double), id (int), quantidade (int);
+b) Dois construtores (Um padrão e outro com todos os parâmetros exceto id - Atenção, leia o item c), setters e getters;
+c) Ao construir, crie uma lógica para atribuir id sequencial, a partir de 5000.
+d) Um método que realize o desconto de 5% no preço de produtos de uma determinada marca. Invoque esse método no construtor.
+
  *
  * @author gabriel.esmunoz
  */
@@ -21,6 +26,7 @@ public class Produto {
         this.preco = preco;
         this.quantidade = quantidade;
         setId(somaID++);
+        setPreco(desconto(marca, preco));
         
     }
     //Construtor feito para deixar mais "agradavel" a busca no main;
@@ -31,6 +37,20 @@ public class Produto {
         
     }
 
+    
+    public double desconto(String marc, double valor) {
+    	double val = ListaSimples.itemGratis(quantidade, preco);
+    	if(marc.equalsIgnoreCase("Mr. Musculo")) {
+    		 val = val -(0.05 * val); //aplicando o desconto de 5% se for da marca "Mr. Musculo";
+    		 return val;
+    	}
+    	return val;
+    }
+    
+    
+    
+    
+    
     public String getMarca() {
         return marca;
     }
@@ -73,8 +93,12 @@ public class Produto {
 
     @Override
     public String toString() {
-        return "" + "ID: "+id+ "| Marca = " + marca + " | Categoria = " + categoria + " | Preco = " + preco + " | Quantidade = " + quantidade + "";
+    	if(marca.equalsIgnoreCase("Mr roboto")) {
+    		return "" + "ID: "+id+ "| Marca = " + marca + " | Categoria = " + categoria + " | Preco = R$" + preco + " | Quantidade = " + quantidade + "";
+    	}
+        
     }
+    
     
     
 }
