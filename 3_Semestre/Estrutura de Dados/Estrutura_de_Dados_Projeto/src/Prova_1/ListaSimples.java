@@ -36,18 +36,18 @@ public class ListaSimples {
         	prodPesq = (Produto)e.getObjeto();
         	if(prodPesq.getMarca().equalsIgnoreCase("Mr. Musculo") && prodPesq.getQuantidade() > 2) {
         		System.out.print(e.getObjeto());
-        		System.out.println(" | Desconto de 5% aplicado | Levando 1 item gratis");
+        		System.out.println("    !!! Desconto de 5% aplicado | Levando 1 item gratis !!!");
         		total = total + prodPesq.getPreco();
                 e = e.getProx();
         	}
         	else if(prodPesq.getQuantidade() >= 3){
         		System.out.print(e.getObjeto());
-        		System.out.println(" | Levando 1 item gratis");
+        		System.out.println("    !!! Levando 1 item gratis !!!");
         		total = total + prodPesq.getPreco();
                 e = e.getProx();
         	}else if(prodPesq.getMarca().equalsIgnoreCase("Mr. Musculo")) {
         		System.out.print(e.getObjeto());
-        		System.out.println(" | Desconto de 5% aplicado");
+        		System.out.println("    !!! Desconto de 5% aplicado !!!");
         		total = total + prodPesq.getPreco();
                 e = e.getProx();
         	}else {
