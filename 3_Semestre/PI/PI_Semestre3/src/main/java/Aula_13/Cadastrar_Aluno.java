@@ -4,7 +4,7 @@ import java.sql.*;
 
 import javax.swing.JOptionPane;
 
-public class ExemploPreparedStatement {
+public class Cadastrar_Aluno {
 
 	public static void main(String[] args) {
 		try {

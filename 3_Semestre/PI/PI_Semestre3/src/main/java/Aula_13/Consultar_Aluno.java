@@ -2,9 +2,15 @@ package Aula_13;
 
 import java.sql.*;
 
-public class ExemploResultSet {
+public class Consultar_Aluno {
 
 	public static void main(String[] args) {
+		
+		Consultar_Aluno alunos = new Consultar_Aluno();
+		alunos.consultarAlunos();
+	}
+	
+	public void consultarAlunos() {
 		try {
 			Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pi_senac", "root", "");
 			Statement st = cn.createStatement();

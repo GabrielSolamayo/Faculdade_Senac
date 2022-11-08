@@ -20,7 +20,7 @@ public class ExemploJTextField extends JFrame{
         setTitle("Primeira janela Swing"); //titulo da janela;
         setSize(600, 400); //tamanho da janela - width-largura, heigth-altura;
         getContentPane().setLayout(null); //anula o layout padrão;
-        c.setBackground(new Color(125, 255, 255)); //cor do fundo da janela no padrã RGB;
+        c.setBackground(new Color(125, 255, 255)); //cor do fundo da janela no padrão RGB;
           
         j11 = criarRotulo("Nome: ", 10, 10, 200, 30);
         j12 = criarRotulo("Endereço: ", 10, 40, 200, 30);
