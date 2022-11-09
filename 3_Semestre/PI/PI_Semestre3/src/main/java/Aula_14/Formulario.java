@@ -21,7 +21,7 @@ public class Formulario extends JFrame implements ActionListener{
 
 	public Formulario() {
 		setTitle("Cadastro de Alunos");
-		setSize(450 , 500);
+		setSize(450 , 350);
 		getContentPane().setLayout(null);
 
 		int x=10, y=10, w=100, h=35;
@@ -32,20 +32,20 @@ public class Formulario extends JFrame implements ActionListener{
 		txtTelefone = criarTexto(110, 60, 300, 35);
 
 		//Criando Botões;
-		btnGravar = criarBotao("Gravar", 60, 120, 100, 30, 'G');
+		btnGravar = criarBotao("Gravar", 60, 120, 130, 30, 'G');
 		btnGravar.addActionListener(this);
 
-		//btnConsultar = criarBotao("Consultar", 240, 120, 130, 30, 'C');
-		//btnConsultar.addActionListener(this);
+		btnConsultar = criarBotao("Consultar", 240, 120, 130, 30, 'C');
+		btnConsultar.addActionListener(this);
 		
-		btnAlterar = criarBotao("Alterar", 60, 340, 130, 30, 'A');
+		btnAlterar = criarBotao("Alterar", 60, 170, 130, 30, 'A');
 		btnAlterar.addActionListener(this);
 
-		//btnExcluir = criarBotao("Cancelar", 240, 120, 130, 30, 'E');
-		//btnExcluir.addActionListener(this);
+		btnExcluir = criarBotao("Excluir", 240, 170, 130, 30, 'E');
+		btnExcluir.addActionListener(this);
 		
-		//btnCancelar = criarBotao("Cancelar", 240, 120, 130, 30, 'S');
-		//btnCancelar.addActionListener(this);
+		btnCancelar = criarBotao("Cancelar", 150, 220, 130, 30, 'S');
+		btnCancelar.addActionListener(this);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -98,6 +98,14 @@ public class Formulario extends JFrame implements ActionListener{
 			int resp = JOptionPane.showConfirmDialog(null,"Confirma o encerramento?");
 			if(resp==0)
 				System.exit(0);
+		}else if(e.getSource() == btnAlterar) {
+			int resp = JOptionPane.showConfirmDialog(null, "Confirma a alteração?");
+			if(resp == 0) {
+				int iD = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do aluno que deseja modificar: "));
+				Aluno novo = new Aluno(txtNome.getText(), txtTelefone.getText());
+				alterarDados(novo, iD);
+				limparCampos();
+			}
 		}
 	}
 
@@ -130,8 +138,25 @@ public class Formulario extends JFrame implements ActionListener{
 		
 	}
 	
-	public void alterarDados() {
-		
+	//Aleterando os dados do aluno referente ao ID;
+	public void alterarDados(Aluno novo, int id) {
+		try {
+			Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pi_senac","root", "");
+
+			PreparedStatement ps = cn.prepareStatement("UPDATE alunos SET nome_aluno = ?, telefone_aluno = ? WHERE idAlunos = ?");
+			ps.setString(1, novo.getNome());
+			ps.setString(2, novo.getTelefone());
+			ps.setInt(3, id);
+			ps.executeUpdate();
+			JOptionPane.showMessageDialog(null, 
+					"Aluno alterado com sucesso com sucesso.");
+			ps.close();
+			cn.close();
+			System.out.println("Conexão encerrada.");            
+		} catch (SQLException e) {
+			System.out.println("Falha ao tentar alterar o Aluno.");
+			e.printStackTrace();
+		}
 	}
 	
 	//Limpando as caixas de textos;
