@@ -1,0 +1,30 @@
+create table itens (
+        idItens int primary key auto_increment, 
+        fk_ingredientes_1 int,
+        fk_ingredientes_2 int,
+        fk_ingredientes_3 int,
+        fk_ingredientes_4 int,
+        fk_ingredientes_5 int,
+        fk_ingredientes_6 int,
+        foreign key (fk_ingredientes_1) references Ingredientes (idIngredientes),
+        foreign key (fk_ingredientes_2) references Ingredientes (idIngredientes),
+        foreign key (fk_ingredientes_3) references Ingredientes (idIngredientes),
+        foreign key (fk_ingredientes_4) references Ingredientes (idIngredientes),
+        foreign key (fk_ingredientes_5) references Ingredientes (idIngredientes),
+        foreign key (fk_ingredientes_6) references Ingredientes (idIngredientes)
+);
+
+create table prato (
+        idPrato int primary key auto_increment,
+        nome_prato varchar(50) not null, 
+        valor_prato double not null, 
+        descricao_prato varchar(100),
+        fk_id_itens int,
+        foreign key (fk_id_itens) references itens (idItens)      
+);
+
+select * from ingredientes;
+desc ingredientes;
+insert into ingredientes (nome_ingre, unidadades, peso_kg) 
+values("arroz", null ,50),
+      ("macarrao", null , 30);
