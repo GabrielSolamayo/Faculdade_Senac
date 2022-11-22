@@ -118,8 +118,7 @@ public class Formulario extends JFrame implements ActionListener{
 			ps.setString(1, novo.getNome());
 			ps.setString(2, novo.getTelefone());
 			ps.executeUpdate();
-			JOptionPane.showMessageDialog(null, 
-					"Aluno cadastrado com sucesso.");
+			JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso.");
 			ps.close();
 			cn.close();
 			System.out.println("Conexão encerrada.");            
