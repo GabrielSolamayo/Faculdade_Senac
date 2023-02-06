@@ -9,3 +9,37 @@ body
 {
     background-color: rgb(255, 255, 0);
 }
+ul
+{
+    font-size: 30pt;
+    color: rgb(34,139,34);
+}
+
+ol
+{
+    font-size: 30pt;
+    color: rgb(255,0,0);
+}
+
+thead
+{
+    font-size: 30pt;
+    color: rgb(0, 183, 255);
+}
+
+tbody
+{
+    font-size: 30pt;
+    color: rgb(255, 153, 0);
+}
+
+tfoot
+{
+    font-size: 30pt;
+    color: rgb(255, 0, 179);
+}
+
+a
+{
+    font-size: 50pt;
+}
