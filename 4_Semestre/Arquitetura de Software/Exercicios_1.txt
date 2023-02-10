@@ -1,0 +1,41 @@
+Arquitetura de Software
+
+Exercício
+
+1) O que é um servidor Web?
+
+R: Dependendo do contexto pode se referir a maquina na qual esta o servidor web ou o software da própria
+
+2) Qual o protocolo de rede utilizado na comunicação entre o cliente e servidor?
+
+R:HTTP ou HTTPS
+
+3) Cite 3 exemplos de software servidor web para site desenvolvidos com Java.
+
+R:
+
+4) QUal o nome do processo onde o cliente solicita ao servidor web?
+
+R: Request
+
+5) Qual o nome do processo onde servidor web responde ao cliente disponibilizado?
+
+R: Response 
+
+6) O que é necessario na máquina do cliente para acessar os recursos hospedado no servidor web?
+
+R: Basicamente um navegador.
+
+7) No contexto cliente-servidor, os recursos front-end executam no cliente ou servidor?
+
+
+8) No contexto cliente-servidor os recuros de back-end executam no cliente ou no servidor?
+
+
+9) Em um site , quais linguagens são utilizadas para construir o front-end?
+
+R: HTML, CSS.
+
+10) Em um site, quais as linguagens são utulizadas para construir o back-end? 
+
+R: JavaScript, Java, Phyton, etc. 

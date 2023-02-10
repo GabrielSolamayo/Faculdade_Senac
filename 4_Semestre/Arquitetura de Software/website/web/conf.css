@@ -1,0 +1,29 @@
+header{
+    height: 100px;
+    background-color: #369
+}
+
+nav{
+    height: 30px;
+    background-color: #abc328;
+}
+
+main{
+    height: 500px;
+    background-color: #ac0b0b;
+}
+
+footer{
+    height: 30px;
+    background-color: #2fc11f;
+}
+
+header, nav, main, footer{
+    width: 90%;
+    border: solid #ededed 1px;
+    margin-bottom: 3px;
+}
+
+* {
+    margin: 0 auto;
+}
