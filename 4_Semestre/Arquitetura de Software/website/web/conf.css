@@ -1,6 +1,9 @@
 header{
-    height: 100px;
-    background-color: #369
+    background-color: #369;
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 nav{
@@ -27,3 +30,38 @@ header, nav, main, footer{
 * {
     margin: 0 auto;
 }
+
+
+
+h1{
+    flex: 40%;
+    padding-left: 30px;
+    box-sizing: border-box;
+}
+
+form{
+    flex: 60%;
+}
+
+
+/* Parte para celular*/
+@media only screen and (max-width: 600px){
+    header {
+        flex-direction: column;
+        border: solid #ff0000 2px;
+        background-color: darkcyan;
+        margin-top: 10px;
+        box-shadow: 5px 10px 10px rgb(50,14,15); /*Criação de sombra, tamanho e cor*/
+        
+    }
+    
+    form {
+        display:flex;
+        flex-direction: column;
+    }
+
+    h1{
+        padding-left: 0px;
+    }
+}
+
