@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8" />
+	<title>Usando JavaScript</title>
+</head>
+<body>
+	<script>
+       var d=new Date();	// Obtendo a data do sistema.
+		var ano=d.getFullYear(); // Extrai ano contado 1900.
+        if (ano<2026)		// ou seja, 2014-1900 = 114
+  		{
+			anosCopa = (2026-d.getFullYear());	
+  		document.write("<h1><b>Estamos em " + ano +  "</br>Faltam " + anosCopa + 
+            " anos para Copa do Mundo no EUA</b></h1>");
+  		}else{
+            document.write("<h1><b>Estamos em "+ano+"</br> Já se passaram "+(d.getFullYear - 2014)+" anos para a Copa do Mundo no Brasil de 2014</b></h1>")
+        }
+
+	</script>	
+</body>
+</html>

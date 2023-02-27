@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8" />
+	<title>Usando JavaScript - Data de Nascimento</title>
+</head>
+<body>
+	<script>
+       var d=new Date();	// Obtendo a data do sistema.
+		var ano=d.getFullYear(); // Extrai ano contado 1900.
+		nasc = Number(prompt("Digite seu ano de nascimento: "));
+        if (nasc > ano)		// Saber se o ano nascimento é maior que o ano atual.
+  		{
+  		    document.write("<h1><b>Ano de nascimento informado maior que o ano atual</b></h1>");
+  		}else{
+			resul = ano - nasc;
+            document.write("<h1><b>Idade resultante: "+resul+" anos</b></h1>")
+		}
+
+	</script>	
+</body>
+</html>

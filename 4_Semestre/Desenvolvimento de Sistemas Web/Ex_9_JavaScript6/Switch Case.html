@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8" />
+	<title>Usando JavaScript - Switch Case</title>
+</head>
+<body>
+	<script>
+       var d = new Date();
+       var mes = d.getMonth();
+       switch(mes){
+        case 11: case 0: case 1: 
+        document.write("<h3><b>Estamos no verão</b></h3>");
+        break;
+
+        case 2:    case 3:   case 4:  
+        document.write("<h3><b>Estamos no outono</b></h3>");
+        break; 
+
+        case 5:   case 6:   case 7:  
+        document.write("<h3><b>Estamos no inverno</b></h3>");
+        break;
+
+        case 8:   case 9:   case 10:      
+        document.write("<h3><b>Estamos na primavera</b></h3>");
+        break;
+        
+        default:
+        document.write("<h3><b>Bagulho doido mermão</b></h3>")
+    }
+	</script>	
+</body>
+</html>
