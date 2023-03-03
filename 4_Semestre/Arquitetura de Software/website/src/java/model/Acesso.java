@@ -26,6 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Acesso.findAll", query = "SELECT a FROM Acesso a"),
+    @NamedQuery(name = "Acesso.findByEmailSenhaFunc", query = "SELECT a FROM Acesso a WHERE a.emailFunc = :emailFunc AND a.senhaFunc = :senhaFunc"),
     @NamedQuery(name = "Acesso.findByEmailFunc", query = "SELECT a FROM Acesso a WHERE a.emailFunc = :emailFunc"),
     @NamedQuery(name = "Acesso.findBySenhaFunc", query = "SELECT a FROM Acesso a WHERE a.senhaFunc = :senhaFunc")})
 public class Acesso implements Serializable {
