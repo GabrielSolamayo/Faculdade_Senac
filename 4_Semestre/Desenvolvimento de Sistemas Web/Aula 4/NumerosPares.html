@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8" />
+<title>Números Pares</title>
+</head>
+<body>
+	<script>
+		n1 = Number(prompt("Digite um numero: "));
+        n2 = Number(prompt("Digite o segundo numero: "));
+        document.write("<h1>Multiplos de 2 entre " + n1 + " e " + n2 + "</h1>");
+        while(n1 <= n2){
+            document.write((n1%2 == 0 ? n1 : "") + "  " );
+            n1++;
+        }
+	</script>
+</body>
+</html>

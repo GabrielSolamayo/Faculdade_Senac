@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title> MEGA SENA </title>
+    <script type="text/javascript">
+        n1 = Number(prompt("Digite quantos números deseja sortear (entre 6 a 20): "));
+        resp = true;
+        while (resp) //teste
+        {
+            for (i = 0; i < n1; i++) {
+                document.write(parseInt(Math.random() * (60 - 1) + 1) + "    ");
+            }
+            resp = confirm("Jogar outro?");
+        }
+    </script>
+</head>
+
+<body></body>
+
+</html>
