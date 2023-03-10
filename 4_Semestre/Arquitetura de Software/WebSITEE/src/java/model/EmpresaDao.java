@@ -12,7 +12,7 @@ public class EmpresaDao {
     private EntityManager manager;
 
     public void conectar() {
-        conn = Persistence.createEntityManagerFactory("websitePU");//Nome tirado da pasta "Configuration Files", "pesistence.xml";
+        conn = Persistence.createEntityManagerFactory("WebSITEEPU");//Nome tirado da pasta "Configuration Files", "pesistence.xml";
         manager = conn.createEntityManager();
     }
 

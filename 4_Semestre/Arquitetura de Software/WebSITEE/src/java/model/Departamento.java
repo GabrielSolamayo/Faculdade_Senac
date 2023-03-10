@@ -5,7 +5,7 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -44,7 +44,7 @@ public class Departamento implements Serializable {
     @Column(name = "foneDep")
     private String foneDep;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "departamento", fetch = FetchType.EAGER)
-    private Collection<Funcionario> funcionarioCollection;
+    private List<Funcionario> funcionarioList;
 
     public Departamento() {
     }
@@ -83,12 +83,12 @@ public class Departamento implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Funcionario> getFuncionarioCollection() {
-        return funcionarioCollection;
+    public List<Funcionario> getFuncionarioList() {
+        return funcionarioList;
     }
 
-    public void setFuncionarioCollection(Collection<Funcionario> funcionarioCollection) {
-        this.funcionarioCollection = funcionarioCollection;
+    public void setFuncionarioList(List<Funcionario> funcionarioList) {
+        this.funcionarioList = funcionarioList;
     }
 
     @Override
