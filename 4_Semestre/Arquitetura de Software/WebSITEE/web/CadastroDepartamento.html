@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CadastrarDepartamento</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form method="POST" action="Controle">
+            <input type="hidden" name="flag" value="CadastroDepartamento">
+            <p>
+                <label for="id">ID: </label>
+                <input type="text" name="IDdepartamento" id="id">
+            </p>
+            <p>
+                <label for="nome">Nome do Departamento: </label>
+                <input type="text" name="nomeDepartamento" id="nome">
+            </p>
+            <p>
+                <label for="fone">Telefone: </label>
+                <input type="tel" name="telefoneDepartamento" id="fone">
+            </p>
+            <input type="submit" value="Cadastrar">
+        </form>
+    </body>
+</html>
