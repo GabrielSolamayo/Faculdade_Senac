@@ -1,5 +1,6 @@
 package model;
 
+import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
@@ -24,9 +25,24 @@ public class EmpresaDao {
             q.setParameter("emailFunc", u);
             Acesso acesso = q.getSingleResult();
             return acesso;
-        } catch(NoResultException ex){
+        } catch (NoResultException ex) {
             return null;
         }
 
+    }
+
+    public int salvarDepartamento(Departamento dep) {
+        conectar();
+        try {
+            manager.getTransaction().begin();
+            manager.persist(dep);
+            manager.getTransaction().commit();
+            return 1;//Cadastro;
+        }catch(EntityExistsException ex){
+            return 2;//Já ta cadastrado;
+        }catch (Exception ex){
+            return 3;//Deu qualquer outro erro;
+        }
+        
     }
 }
