@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>Área e Perímetro do Retângulo</title>	
+    <link rel="stylesheet" href="../css/OperacoesMatematicas.css">
+		<script>
+            nome = prompt("Digite o nome:");
+            function mostrarTamanhoString()
+            {	document.write(nome + " tem " + nome.length + " caracteres.");	}
+            function contarMaiusculas(){		
+                maiusculas=0;
+                for(i=0 ; i<nome.length ; i++){
+                    if(nome.charAt(i)=="A" || nome.charAt(i)=="E" || nome.charAt(i)=="I" 
+                        || nome.charAt(i)=="O" || nome.charAt(i)=="U")
+                            maiusculas++;                    
+                }
+                document.write( nome + " tem " + maiusculas + " vogais Maiúsculas.");
+            }
+            function imprimirInvertido(){		
+                for(i=nome.length-1 ; i>-1 ; i--){
+                    document.write( nome[i]);
+            	}
+            }
+            function tudoMaiusculo()
+            {		document.write( nome.toUpperCase());	}            
+        </script>
+	</head>
+	<body>
+    <form name="formulario">
+        <input type="button" onclick="mostrarTamanhoString()" 
+        value="Tamanho da String com length" /></br></br>
+        <input type="button" onclick="contarMaiusculas()" 
+            value="Verificar Maiúsculas"/></br></br>
+        <input type="button" onclick="imprimirInvertido()" 
+            value="Nome Invertido" /></br></br>
+        <input type="button" onclick="tudoMaiusculo()" 
+            value='Tudo em Maiúsculas' />  </br>  </br>    
+    </form>
+	</body>
+</html>

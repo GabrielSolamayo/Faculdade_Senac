@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>Área e Perímetro do Retângulo</title>	
+    <link rel="stylesheet" href="../css/OperacoesMatematicas.css">
+		<script>
+            function abrirJanela()	//função para abrir a janela
+            {	    	
+                novaJanela=window.open('','','width=400,height=100'); 	
+                novaJanela.moveTo(300,200); 	 
+                novaJanela.onload=alert("Bem Vindo");                     	        		
+            }
+            function fecharJanela()		//fechar a janela
+            {
+                novaJanela.onunload=alert("Até Logo!!!");	
+                novaJanela.close();		//fechando a janela                    
+            }
+        
+        </script>
+	</head>
+	<body>
+    <form name="formulario">
+        <input type="button" onclick="abrirJanela()" 
+        value="Abrir Janela" /></br></br>
+        <input type="button" onclick="fecharJanela()" 
+            value="Fechar Janela"/></br></br>
+        
+    </form>
+	</body>
+</html>

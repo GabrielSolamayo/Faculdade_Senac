@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo open e close</title>
+    <script type="text/javascript">
+        function abrirJanela(){
+
+            novaJanela=window.open('','','width=400,height=100'); //nova janela
+            novaJanela.document.write("<h3>Janela aberta com método open()</h3>");
+            novaJanela.moveTo(100,300); //posicionando a janela
+}
+function fecharJanela()//função para fechar a janela
+{
+     alert('A janela sera fecahda agora!!'); // caixa de mensagem
+    novaJanela.close(); // fechando a janela
+        } 
+
+    </script>
+</head>
+<body>
+    <input type="button" value="Abrir Nova Janela" onclick="abrirJanela()"/>
+    <input type="button" value="Fechar janela Aberta" onclick="fecharJanela()"/>
+
+</body>
+</html>

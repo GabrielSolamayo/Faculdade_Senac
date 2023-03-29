@@ -1,0 +1,27 @@
+h1,h5{
+  text-align: center;
+}
+label
+{
+  font-family: "verdana";
+  font-size: 16px;
+}
+form
+{
+  background-color:rgb(165, 42, 42);
+  width: 600px;
+  height: 450px;
+  margin-left: 70px;
+  padding: 10px;
+  border: 10px solid rgb(30, 27, 177);
+  border-radius: 25px;
+  color: beige;
+}
+.todosCampos{ padding: 5px; }
+div{margin-left: 50px;}
+td{
+  vertical-align: text-top;
+}
+input{
+  height: 25px;
+}

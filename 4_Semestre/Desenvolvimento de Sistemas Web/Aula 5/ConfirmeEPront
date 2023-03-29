@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo comfirm e promt</title>
+    <script type="text/javascript">
+        function abrirCaixaEntrada () // PROMT
+        {
+            var nome=prompt("Digite seu nome:","Lucas");
+            alert("Bem Vindo :" + nome);}
+        function abrirCaixaConfirmacao()// CONFIRM   
+          { var r=confirm("Clique sobre um botao!")
+        if(r==true){
+            alert("Voce Clicou sobre o botao OK") }
+
+        else { alert("Voce Clicou sobre o botao OK") }
+
+        }
+    </script>
+</head>
+<body>
+    <input type="button" onclick="abrirCaixaEntrada()" value="Entrada"/><br/><br/>
+    <input type="button" onclick="abrirCaixaConfirmacao()" value="Confirmacao"/><br/><br/>
+</body>
+</html>

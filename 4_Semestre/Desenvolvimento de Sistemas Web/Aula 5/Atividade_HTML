@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>Área e Perímetro do Retângulo</title>	
+    <link rel="stylesheet" href="../css/OperacoesMatematicas.css">
+		<script>
+      function calcular()
+      {
+        let base = Number(document.getElementById("numero1").value);
+        let altura = Number(document.getElementById("numero2").value);
+       
+        document.formulario.perimetro.value = (base*2 + altura*2); 
+        document.formulario.area.value = (base*altura);
+      }      
+    </script>
+	</head>
+	<body>
+    <form name="formulario">
+      <label>Área e Perímetro do Retângulo.</label><br/><br/>
+      <label>Base : </label><input type="text" id="numero1"/><br/>
+      <label>Altura : </label><input type="text" id="numero2"/><br/>
+      
+      <label>Perímetro : </label><input type="text" name="perimetro" ><br/>
+      <label>Área : </label><input type="text" name="area" ><br/>
+      <br/> <br/> 
+      <input type="button" class="botao"  value="Validar" 
+      id="validar" onclick="calcular()">
+    </form>
+	</body>
+</html>

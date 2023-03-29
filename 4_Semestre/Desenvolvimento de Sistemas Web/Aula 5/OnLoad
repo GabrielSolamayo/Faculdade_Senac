@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+	  <script type="text/javascript">
+	    function abrirSitesenac()
+	    {//utilizando a função open sobre a janela
+		     window.open("http://www.senac.br");	
+        }
+	  </script>
+	</head>
+ 	<body onload ="abrirSitesenac()">	
+		<h1>De volta ao corpo do documento</h1>
+    </body> 
+</html>

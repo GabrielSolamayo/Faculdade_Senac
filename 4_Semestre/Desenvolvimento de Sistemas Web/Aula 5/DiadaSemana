@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <script type="text/javascript">
+            var ano=0, mês=0, diaDoMes=0, diaDaSemana=""; 
+            var d = new Date();
+            function exibirData()//Exibindo a data e a hora atuais
+            {
+                ano = d.getFullYear();    mes = d.getMonth() + 1; 
+                diaDoMes = d.getDate(); 
+                diaDaSemana = d.getDay(); 
+                switch(diaDaSemana) 	  {
+                    case 0: diaSemanaString = "Domingo";     break;
+                    case 1:	diaSemanaString = "Segunda";     break;
+                    case 2: diaSemanaString = "Terça";	     break;
+                    case 3: diaSemanaString = "Quarta";      break;
+                    case 4: diaSemanaString = "Quinta";      break;
+                    case 5: diaSemanaString = "Sexta";       break;
+                    case 6: diaSemanaString = "Sábado";
+                }                     
+                alert(diaDoMes+ "/" +mes+ "/" +ano+ " - "    + diaSemanaString);
+            }    
+        </script>  
+    </head>  
+    <body>
+        <input type="button" onclick="exibirData()" 
+        value="Data do sistema" />  <br /><br />	    
+    </body>  
+</html>

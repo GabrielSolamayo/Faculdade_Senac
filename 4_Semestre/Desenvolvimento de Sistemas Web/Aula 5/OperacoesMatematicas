@@ -1,0 +1,39 @@
+form{
+    margin-top: 100px;
+    margin-left: 100px;
+    border: double 22px red;
+    width: 450px;    
+    padding: 30px;
+    background-image: url(../imagens/EUA2018.jpg);
+}
+
+body{
+    font-family: Verdana;
+    font-size: 18pt;
+}
+
+#n1, #n2, #inputResultado{
+    background-color: yellow;
+    font-size: 18pt;
+    font-family: verdana;
+    border: 1px solid black;
+    margin-top: 2px;
+    width: 250px;
+}
+
+label{
+    font-weight: bold;    
+}
+
+.botao 
+  {
+    width: 88px;
+    height: 28px;
+    border: solid 3px blue;
+    border-radius: 10px;
+    color: green;
+    background-color: rgba(255, 255, 0, 0.52);
+    text-align: center;
+    font-size: 18px;    
+    margin: 4px 2px;    	
+  }

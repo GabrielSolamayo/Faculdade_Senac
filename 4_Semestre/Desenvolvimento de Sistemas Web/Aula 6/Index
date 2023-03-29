@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>Área e Perímetro do Retângulo</title>	
+    <link rel="stylesheet" href="../css/OperacoesMatematicas.css">
+		<script>
+            nome = "São Paulo Futebol Clube o MELHOR no Futebol Brasileiro!";
+            function mostrarTamanhoString()
+            {	alert("São Paulo tem " + nome.length + " caracteres.");	}
+            function encontrarLetraIndice4()
+            {		alert(nome.charAt(4));	}
+            function encontrarIndiceLetraB()
+            {		alert(nome.indexOf('B'));	}
+            function ultimoOcorrenciaN()
+            {		alert(nome.lastIndexOf('n'));	}
+            function do13CaractereAoFim()
+            {		alert(nome.substring(13));		}
+            function converterMaiusculas()
+            {		alert(nome.toUpperCase());	}
+            function converterMinusculas()	
+            {		alert(nome.toLowerCase());	}	
+            function trocar_e_por_E()
+            {   
+                alert(nome.replace("e", "E"));	
+            }   
+        </script>
+	</head>
+	<body>
+    <form name="formulario">
+        <input type="button" onclick="mostrarTamanhoString()" 
+        value="Tamanho da String com length" />
+        <input type="button" onclick="encontrarLetraIndice4()" 
+            value="Letra no índice 4 com charAt(int)"/></br>
+        <input type="button" onclick="encontrarIndiceLetraB()" 
+            value="Índice da letra B com indexOf(char)" />
+        <input type="button" onclick="ultimoOcorrenciaN()" 
+            value='Índice da última ocorrência de "n" com lastIndexOf(char)' />
+        <input type="button" onclick="do13CaractereAoFim()" 
+            value="Imprimindo a partir do 13º Caractere com substring(indice)" />
+        <input type="button" onclick="converterMaiusculas()" 
+            value="Tudo em letras Maiúsculas com toUpperCase()" />
+        <input type="button" onclick="converterMinusculas()" 
+            value="Tudo em letras Minúsculas com toUpperCase()" />
+        <input type="button" onclick="trocar_e_por_E()" 
+            value='Trocando "e" por "E" com replace(char,char)'/>
+    </form>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <script type="text/javascript">
+            var horas=0, minutos=0, segundos=0, milissegundos=0, ano, 
+            mes, diaDoMes;	var d = new Date();
+            function exibirHora(){   
+                horas = d.getHours();   minutos = d.getMinutes();  
+                segundos = d.getSeconds(); milissegundos = d.getMilliseconds();
+                alert("São " +horas+ ":" +minutos+ ":" +segundos+ " e " 
+                +milissegundos+ " milissegundos.");		 }
+            function alterarDataHora(){	 
+                ano = d.setFullYear(2026);   mes = d.setMonth(6);    
+                diaDoMes = d.setDate(13);  horas = d.setHours(16); 	   
+                minutos = d.setMinutes(0);   segundos = d.setSeconds(0); 
+                milissegundos = d.setMilliseconds(0);    exibirHora();
+                alert("Vai começar a Final da Copa de 2026");
+            }			
+        </script>	 
+    </head>  
+    <body>
+        <input type="button" onclick="exibirHora()" value="Data e Hora do sistema" /> 
+        <input type="button" onclick="alterarDataHora()" value="Final da Copa 2026" />	
+    </body>  
+</html>

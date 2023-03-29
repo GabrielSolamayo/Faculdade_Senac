@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Contato</title>
+  <link type="text/css" rel="stylesheet" href="css/exercicio2.css">
+
+  <script>
+    function validar(){
+      resp = confirm("Confirma o envio:");
+      if(resp)
+        alert("Dados Gravados com sucesso!");
+      else
+        alert("Dados não foram Gravados!");
+    }
+  </script>
+  
+  </head>
+  <body>
+    <form>      
+        <h1>Formulário de Contato</h1>
+        <h5>Preencha todos os campos</h5>
+        <hr/>
+        <div>
+          <table>
+            <tr>
+              <td><label class="todosCampos">Nome:</label></td>
+              <td><input class="todosCampos" type="text" name="nome" 
+                required="true" placeholder="Digite seu Nome" 
+                autofocus="autofocus" size="57"><br/><br/></td>
+            </tr>
+            <tr>
+              <td><label class="todosCampos">e-mail:</label></td>
+              <td><input class="todosCampos" type="email" name="email" 
+                size="57" required="required"><br/><br/></td>
+            </tr>
+            <tr>
+              <td><label class="todosCampos">Assunto:</label></td>
+              <td>
+                <select class="todosCampos">
+                  <option value="CSS">Java</option>
+                  <option value="JavaScrip">PHP</option>
+                  <option value="JSP">JSP</option>
+                  <option value="HTML">HTML</option>
+                </select>
+                <br/><br/>
+              </td>
+            </tr>
+          </table>         
+          <label class="todosCampos">Mensagem: </label>
+          <textarea rows="5" cols="70"></textarea>
+          <br/><br/>
+          <input type="submit" value="Enviar" onclick="validar()"/> 
+      </div>    
+    </form>
+  </body>
+</html>

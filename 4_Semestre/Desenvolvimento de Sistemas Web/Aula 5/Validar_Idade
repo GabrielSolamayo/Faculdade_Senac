@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <!DOCTYPE html>
+<html lang="pt-br">
+    <head>   
+        <script type="text/javascript">
+            function validarIdade(){
+                res = teste.idade.value; 
+                if(res>=18)
+                    alert("Você tem " + res + " anos é um Adulto");
+                else if(res<18)
+                    alert("Você tem " + res + " anos é um Menor de 	Idade");   }	
+        </script>	
+    </head>
+    <body>
+        <form name="teste" action="#" onSubmit="return validarIdade()" >
+            Idade: <input type="text" name="idade" value="Marcos"/></br></br>
+            <input name="submit" type="submit" value="Validar Idade">	
+        </form>
+    </body>
+</html>
