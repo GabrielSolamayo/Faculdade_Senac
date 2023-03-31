@@ -1,5 +1,6 @@
 package model;
 
+import java.util.List;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -44,5 +45,28 @@ public class EmpresaDao {
             return 3;//Deu qualquer outro erro;
         }
         
+    }
+    
+    public List<Departamento> listarDepartamentos() {
+        conectar();
+        try {
+            TypedQuery<Departamento> q = manager.createNamedQuery("Departamento.findAll", Departamento.class);//Query tirado da classe "Departamento";
+            List<Departamento> departamentos = q.getResultList();
+            return departamentos;
+        } catch (NoResultException ex) {
+            return null;
+        }
+    }
+    
+    public List<Departamento> consultarDepartamento(String nome){
+        conectar();
+        try{
+            TypedQuery<Departamento> q = manager.createNamedQuery("Departament.findAll", Departamento.class);
+            q.setParameter("nomeDep", nome);
+            List<Departamento> departamentos  = q.getResultList();
+            return departamentos;
+        }catch(NoResultException ex) {
+            return null;
+        }
     }
 }

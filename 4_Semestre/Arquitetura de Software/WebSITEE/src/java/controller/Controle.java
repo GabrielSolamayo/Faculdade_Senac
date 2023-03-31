@@ -6,6 +6,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -80,6 +81,19 @@ public class Controle extends HttpServlet {
             request.setAttribute("m", mensagem);
             RequestDispatcher disp = request.getRequestDispatcher("MensagensDeErro.jsp");
             disp.forward(request, response);
+        }else if(flag.equalsIgnoreCase("ListarDepartamento")){
+            List<Departamento> departamentos = new EmpresaDao().listarDepartamentos(); //Instancia logo de uma vez, ao inves de criar uma variavel "atoa";
+            
+            request.setAttribute("listarDepartamentos", departamentos);
+            RequestDispatcher disp = request.getRequestDispatcher(".jsp");
+            disp.forward(request, response);
+        }else if(flag.equalsIgnoreCase("ConsultarDepartamento")){
+            List<Departamento> departamentos = new EmpresaDao().listarDepartamentos(); //Instancia logo de uma vez, ao inves de criar uma variavel "atoa";
+            
+            request.setAttribute("listarDepartamentos", departamentos);
+            RequestDispatcher disp = request.getRequestDispatcher(".jsp");
+            disp.forward(request, response);
+            
         }
     }
 

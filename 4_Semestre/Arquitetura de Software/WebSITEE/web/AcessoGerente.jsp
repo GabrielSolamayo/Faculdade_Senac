@@ -29,7 +29,7 @@
                         <a href="AlterarDepartamento.html" target="conteudo">Alterar</a>
                         <a href="ExcluirDepartamento.html" target="conteudo">Excluir</a>
                         <a href="ConsultarDepartamento.html" target="conteudo">Consultar</a>
-                        <a href="ListarDepartamento.html" target="conteudo">Listar</a>
+                        <a href="Controle?flag=ListarDepartamento" target="conteudo">Listar</a>
                     </div>
                 </div> 
                 <div class="dropdown">
