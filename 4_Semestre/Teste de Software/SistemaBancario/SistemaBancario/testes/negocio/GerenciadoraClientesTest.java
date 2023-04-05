@@ -17,8 +17,8 @@ import org.junit.Test;
 public class GerenciadoraClientesTest {
 	
 	private GerenciadoraClientes gerClientes;
-	private int idCliente;
-	//private int idCliente02 = 5;
+	private int idCliente = 2;
+	//private int idCliente02 = 2;
 
 	@Before
 	public void setUp() {
@@ -32,7 +32,7 @@ public class GerenciadoraClientesTest {
 		clienteDoBanco.add(cliente01);
 		clienteDoBanco.add(cliente02);
 		
-		idCliente = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID para busca"));
+		//idCliente = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID para busca"));
 		
 		gerClientes = new GerenciadoraClientes(clienteDoBanco);
 		
@@ -58,7 +58,9 @@ public class GerenciadoraClientesTest {
 	 * Teste básico da pesquisa de um cliente a partir do seu ID.
 	 */
 	
+	
 	@Test
+	
 	public void testePesquisaCliente() {
 		
 		Cliente cliente = gerClientes.pesquisaCliente(idCliente);
@@ -66,9 +68,34 @@ public class GerenciadoraClientesTest {
 		assertThat(cliente.getId(), is(idCliente));
 	}
 	
+	
+	
 	/**
-	 * 
+	 * Teste básico da remoção de um cliente  a partir do seu ID
 	 */
+	
+	@Test
+	public void testeRemoveCliente() {
+		/*========== Execução ============*/
+		boolean clienteRemovido = gerClientes.removeCliente(idCliente);
+		
+		/*========== Verificação ==========*/
+		
+		assertThat(clienteRemovido, is(true));
+		assertThat(gerClientes.getClientesDoBanco().size(), is(1));
+		assertNull(gerClientes.pesquisaCliente(idCliente));
+	}
+	
+	@Test
+	public void testeIdade() throws IdadeNaoPermitidaException {
+		
+		/*========== Execução ============*/
+		
+		
+		
+		boolean clienteIdadae = gerClientes.validaIdade(cliente01.getIdade);
+	}
+	
 	
 	
 	
