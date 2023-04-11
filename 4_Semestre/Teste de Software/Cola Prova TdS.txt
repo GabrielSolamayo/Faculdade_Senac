@@ -10,5 +10,77 @@ possíveis usuários e da abordagem geral adotada pela organização ao
 escrever os requisitos
 
 
-Não funcionais: Os requisitos não funcionais, são requisitos que não estão diretamente relacionados com os serviços específicos oferecidos pelo sistema a seus usuários por exemplo, confiabilidade,tempo de resposta e ocupação de área
+Não funcionais: Os requisitos não funcionais, são requisitos que não estão diretamente relacionados com os serviços específicos oferecidos pelo sistema a seus usuários. Por exemplo, confiabilidade,tempo de resposta e ocupação de área.
+
+• Defeito: deficiência mecânica ou algorítmica que, se
+ativada, pode levar a uma falha.
+– Instrução ou comando incorreto 
+
+• Erro: item de informação ou estado de execução
+inconsistente.
+• Falha: evento notável em que o sistema viola suas
+especificações.
+
+TECNICAS DE TESTE DE SOFTWARE
+
+• Ajudam a escolher os conjuntos de dados de teste
+– Diminuem o número de casos de teste
+– Maior probabilidade de existência de erros
+
+• Duas técnicas principais:
+– Estrutural: caixa branca
+– Funcional: caixa preta
+
+CAIXA BRANCA:
+
+• O teste é feito considerando o conhecimento da
+estrutura interna do código
+
+
+CAIXA PRETA: 
+
+Alvo do teste como uma caixa preta
+– Não se usa nenhum detalhe interno
+- Foco na especificação
+
+	TECNICAS DE CAIXA PRETA:
+	• Particionamento de equivalência;
+	• Análise de valor limite;
+	• Teste de tabela de decisão;
+	• Grafo de causa e efeito;
+	• Teste de transição de estado;
+	• Teste de caso de uso.
+
+- Particionamento de Equivalência:
+	 • Classes válidas
+		– Caso de teste deve cobrir diversas classes válidas
+	• Classes inválidas
+		– Caso de teste deve cobrir apenas uma classe inválida
+
+- Análise de Valor Limite:
+	• Focaliza o teste em um ponto propício a erros, os limites
+	de uma classe ou partição de equivalência.
+
+	• Valor Limite
+– Para o valor limite temos as seguintes entradas:
+• Intervalo de valores: valores válidos no limite, valores sucessor e
+antecessor ao limite; valores inválidos imediatamente fora dos limites.
+• Quantidade de valores: dados com o valor; maior que o valor; menor
+que o valor; com nenhum valor.
+
+TESTE DE UNIDADE:
+
+• Objetivo: encontrar falhas de funcionamento dentro de uma pequena
+parte do sistema funcionando independentemente do todo.
+• Também conhecido por Teste de Componente ou Teste Unitário.
+
+TESTE DE INTEGRAÇÃO:
+
+• Objetivo: validar a comunicação entre os componentes de um sistema. 
+• Geralmente é automatizado, por meio de ferramentas como Junit, PHPUnit,
+XXXUnit e outras.
+• Podem ser feitos antes de o sistema estar concluído, à medida em que os
+componentes vão ficando prontos.
+• Encontra Falhas na comunicação entre componentes.
+
 
