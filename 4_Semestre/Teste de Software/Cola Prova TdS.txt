@@ -1,0 +1,14 @@
+Dados: Pode ser qualquer fato ou pedaço de informação que ajude a formar outra inforamação.
+
+Informação: Informação é a resultante do processamento, manipulação e organização de dados, de tal forma
+que represente uma modificação (quantitativa ou qualitativa) no conhecimento do sistema (humano,
+animal ou máquina) que a recebe.
+
+
+Requisitos Funcionais: Os requisitos funcionais de um sistema descrevem o que ele deve fazer.Eles dependem do tipo de software a ser desenvolvido, de quem são seus
+possíveis usuários e da abordagem geral adotada pela organização ao
+escrever os requisitos
+
+
+Não funcionais: Os requisitos não funcionais, são requisitos que não estão diretamente relacionados com os serviços específicos oferecidos pelo sistema a seus usuários por exemplo, confiabilidade,tempo de resposta e ocupação de área
+
