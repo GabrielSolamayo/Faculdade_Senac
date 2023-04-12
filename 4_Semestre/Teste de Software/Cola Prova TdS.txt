@@ -13,11 +13,12 @@ escrever os requisitos
 Não funcionais: Os requisitos não funcionais, são requisitos que não estão diretamente relacionados com os serviços específicos oferecidos pelo sistema a seus usuários. Por exemplo, confiabilidade,tempo de resposta e ocupação de área.
 
 • Defeito: deficiência mecânica ou algorítmica que, se
-ativada, pode levar a uma falha.
+ativada, pode levar a uma falha. 
 – Instrução ou comando incorreto 
 
 • Erro: item de informação ou estado de execução
 inconsistente.
+
 • Falha: evento notável em que o sistema viola suas
 especificações.
 
@@ -83,4 +84,32 @@ XXXUnit e outras.
 componentes vão ficando prontos.
 • Encontra Falhas na comunicação entre componentes.
 
+Definição de Qualidade: O grau em que o sistema, componente ou processo atende
+(1) os requisitos especificados e (2) as expectativas e
+necessidades do cliente ou do usuário (IEEE 610, 1990).
 
+8 Qualidades : Adequação Funcional, Efeciencia de Desempenho, Portabilidade, Usabilidade, Confiabilidade, Segurança, Manutenabilidade e Compatibilidade.
+
+Garantia de Qualidade:Busca garantir que os processos e produtos cumprem os
+objetivos de qualidade.
+
+Quem valida é o cliente. Quem verifica é o programador.
+
+Na validação procura-se demonstrar que o produto ou componente do
+produto cumpre o uso pretendido quando colocado em seu ambiente
+desejado.
+
+Qualidade é algo que não pode ser simplesmente quantificado para avaliação e/ou
+definido como certo, mesmo assim o objetivo das empresas deve ser o de atingir um alto nível de qualidade de forma a ser tornar benéfico tanto para a empresa quanto para os clientes.
+
+
+Definição e análise de requisitos: 
+	• Processo de análise de negócio ou da missão
+	• Processo de definição das necessidades e
+	  requisitos dos stakeholders
+	• Processo de definição dos requisitos de sist./sofA
+
+ 
+A estratégia de testes e o ambiente de teste está dentro dos Planos de Testes. 
+
+A Estratégia de Testes se caracteriza pela definição da abordagem geral a ser aplicada nos testes, descrevendo como o software será testado, identificando os níveis de testes que serão aplicados, os métodos, técnicas e ferramentas a serem usadas.
