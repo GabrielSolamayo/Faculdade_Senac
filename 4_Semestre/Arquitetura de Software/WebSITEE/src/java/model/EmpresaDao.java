@@ -86,8 +86,7 @@ public class EmpresaDao {
         conectar();
         
         
-        Departamento dep = new Departamento();
-        dep.setIdDep(idDep);
+        Departamento dep = manager.find(Departamento.class, idDep);
         
         try {
             manager.getTransaction().begin();
