@@ -82,17 +82,38 @@ public class Controle extends HttpServlet {
             RequestDispatcher disp = request.getRequestDispatcher("MensagensDeErro.jsp");
             disp.forward(request, response);
         }else if(flag.equalsIgnoreCase("ListarDepartamento")){
-            List<Departamento> departamentos = new EmpresaDao().listarDepartamentos(); //Instancia logo de uma vez, ao inves de criar uma variavel "atoa";
             
+            List<Departamento> departamentos = new EmpresaDao().listarDepartamentos(); //Instancia logo de uma vez, ao inves de criar uma variavel "atoa";
             request.setAttribute("listarDepartamentos", departamentos);
-            RequestDispatcher disp = request.getRequestDispatcher(".jsp");
+            RequestDispatcher disp = request.getRequestDispatcher("ListarDepartamentos.jsp");
             disp.forward(request, response);
         }else if(flag.equalsIgnoreCase("ConsultarDepartamento")){
-            List<Departamento> departamentos = new EmpresaDao().listarDepartamentos(); //Instancia logo de uma vez, ao inves de criar uma variavel "atoa";
             
+            String nomeDep = request.getParameter("nomeDepartamento");//O valor do parametro é o 'name' do input do 'ConsultarDepartamento.html';
+            EmpresaDao dao = new EmpresaDao();//Instancia um objeto da classe EmpresaDao para acessar os métodos desta classe;
+            List<Departamento> departamentos = dao.consultarDepartamentos(nomeDep);//Chama o método consultarDepartamento passando o nome do departamento e recebe a lista evolvida pelo método;
+           
+            //Enviar a lista de Departamentos para o arquivo ListarDepartamentos.jsp;
             request.setAttribute("listarDepartamentos", departamentos);
-            RequestDispatcher disp = request.getRequestDispatcher(".jsp");
+            RequestDispatcher disp = request.getRequestDispatcher("ListarDepartamentos.jsp");
             disp.forward(request, response);
+            
+        }else if(flag.equalsIgnoreCase("ExcluirDepartamento")){
+            
+            String idDep = request.getParameter("idDep");
+            EmpresaDao dao = new EmpresaDao();
+            int resultado = dao.excluirDepartamento(idDep);
+            if(resultado == 1){
+                mensagem = "Departamento excluído com sucesso";
+            }else {
+                mensagem = "Erro ao tentar excluir o departamento";
+            }
+            request.setAttribute("m", mensagem);
+            RequestDispatcher disp = request.getRequestDispatcher("MensagensDeErro.jsp");
+            disp.forward(request, response);
+        }else if(flag.equalsIgnoreCase("AlterarDepartamento")){
+            
+            String idDep = request.getParameter("idDep");
             
         }
     }

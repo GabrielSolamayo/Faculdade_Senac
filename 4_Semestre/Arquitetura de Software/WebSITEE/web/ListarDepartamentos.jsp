@@ -25,6 +25,8 @@
                 <th>Código</th>
                 <th>Nome</th>
                 <th>Telefone</th>
+                <th>Exclusão</th>
+                <th>Edição</th>
             </tr>
             <%
                 for(Departamento departamento : listaDepartamentos){
@@ -33,6 +35,8 @@
                 <td><%= departamento.getIdDep() %></td>//<%--tag usada para exibir (<%= %> --%>
                 <td><%= departamento.getNomeDep() %></td>
                 <td><%= departamento.getFoneDep() %></td>
+                <td><a href="Controle?flag=ExcluirDepartamento&idDep=<%= departamento.getIdDep() %>">Excluir</a></td>
+                <td><a href="Controle?flag=AlterarDepartamento&idDep=<%= departamento.getIdDep() %>">Alterar</a></td>
             </tr>
             <%
             }

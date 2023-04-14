@@ -58,6 +58,18 @@ public class EmpresaDao {
         }
     }
     
+     public List<Departamento> consultarDepartamentos(String nomeDep) {
+        conectar();
+        try {
+            TypedQuery<Departamento> q = manager.createNamedQuery("Departamento.findByNomeDep", Departamento.class).setParameter("nomeDep", "%"+nomeDep+"%");
+            List<Departamento> departamentos = q.getResultList();
+            return departamentos;
+        } catch (NoResultException ex) {
+            return null;
+        }
+
+    }   
+    
     public List<Departamento> consultarDepartamento(String nome){
         conectar();
         try{
@@ -69,4 +81,23 @@ public class EmpresaDao {
             return null;
         }
     }
+    
+    public int excluirDepartamento(String idDep) {
+        conectar();
+        
+        
+        Departamento dep = new Departamento();
+        dep.setIdDep(idDep);
+        
+        try {
+            manager.getTransaction().begin();
+            manager.remove(dep);//So aceita tipos Object;
+            manager.getTransaction().commit();
+            return 1;//Cadastro;
+        }catch(Exception ex){
+            return 0;//Já ta cadastrado;
+        }
+        
+    }
+    
 }
