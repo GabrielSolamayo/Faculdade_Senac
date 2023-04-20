@@ -9,15 +9,15 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 public class EmpresaDao {
-
+    
     private EntityManagerFactory conn;
     private EntityManager manager;
-
+    
     public void conectar() {
         conn = Persistence.createEntityManagerFactory("WebSITEEPU");//Nome tirado da pasta "Configuration Files", "pesistence.xml";
         manager = conn.createEntityManager();
     }
-
+    
     public Acesso validarLogin(String u, String s) {
         conectar();
         try {
@@ -29,9 +29,9 @@ public class EmpresaDao {
         } catch (NoResultException ex) {
             return null;
         }
-
+        
     }
-
+    
     public int salvarDepartamento(Departamento dep) {
         conectar();
         try {
@@ -39,9 +39,9 @@ public class EmpresaDao {
             manager.persist(dep);
             manager.getTransaction().commit();
             return 1;//Cadastro;
-        }catch(EntityExistsException ex){
+        } catch (EntityExistsException ex) {
             return 2;//Já ta cadastrado;
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return 3;//Deu qualquer outro erro;
         }
         
@@ -58,26 +58,26 @@ public class EmpresaDao {
         }
     }
     
-     public List<Departamento> consultarDepartamentos(String nomeDep) {
+    public List<Departamento> consultarDepartamentos(String nomeDep) {
         conectar();
         try {
-            TypedQuery<Departamento> q = manager.createNamedQuery("Departamento.findByNomeDep", Departamento.class).setParameter("nomeDep", "%"+nomeDep+"%");
+            TypedQuery<Departamento> q = manager.createNamedQuery("Departamento.findByNomeDep", Departamento.class).setParameter("nomeDep", "%" + nomeDep + "%");
             List<Departamento> departamentos = q.getResultList();
             return departamentos;
         } catch (NoResultException ex) {
             return null;
         }
-
-    }   
+        
+    }
     
-    public List<Departamento> consultarDepartamento(String nome){
+    public List<Departamento> consultarDepartamento(String nome) {
         conectar();
-        try{
+        try {
             TypedQuery<Departamento> q = manager.createNamedQuery("Departament.findAll", Departamento.class);
             q.setParameter("nomeDep", nome);
-            List<Departamento> departamentos  = q.getResultList();
+            List<Departamento> departamentos = q.getResultList();
             return departamentos;
-        }catch(NoResultException ex) {
+        } catch (NoResultException ex) {
             return null;
         }
     }
@@ -85,16 +85,37 @@ public class EmpresaDao {
     public int excluirDepartamento(String idDep) {
         conectar();
         
+        try {
+            Departamento dep = manager.find(Departamento.class, idDep);
+            if (dep == null) {
+                return 2;//Nao Existe;
+            } else {
+                manager.getTransaction().begin();
+                manager.remove(dep);//So aceita tipos Object;
+                manager.getTransaction().commit();
+                return 1;//Encontrados;
+            }
+        } catch (Exception ex) {
+            return 0;//Nao encontrado;
+        }
         
-        Departamento dep = manager.find(Departamento.class, idDep);
+    }
+    
+    public int alterarDepartamento(String idDep, String nomeDep, String foneDep) {
+        conectar();
         
         try {
+            Departamento dep = manager.find(Departamento.class, idDep);
+            
+            dep.setNomeDep(nomeDep);
+            dep.setFoneDep(foneDep);
+            
             manager.getTransaction().begin();
-            manager.remove(dep);//So aceita tipos Object;
+            manager.merge(dep);//So aceita tipos Object;
             manager.getTransaction().commit();
-            return 1;//Cadastro;
-        }catch(Exception ex){
-            return 0;//Já ta cadastrado;
+            return 1;//Encontrados;
+        } catch (Exception ex) {
+            return 0;//Nao encontrado;
         }
         
     }

@@ -36,7 +36,7 @@
                 <td><%= departamento.getNomeDep() %></td>
                 <td><%= departamento.getFoneDep() %></td>
                 <td><a href="Controle?flag=ExcluirDepartamento&idDep=<%= departamento.getIdDep() %>">Excluir</a></td>
-                <td><a href="Controle?flag=AlterarDepartamento&idDep=<%= departamento.getIdDep() %>">Alterar</a></td>
+                <td><a href="AlterarDepartamento.jsp?idDep=<%= departamento.getIdDep() %>&nomeDep=<%= departamento.getNomeDep() %>&foneDep=<%= departamento.getFoneDep() %>">Alterar</a></td>
             </tr>
             <%
             }

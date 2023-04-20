@@ -58,6 +58,8 @@ public class Controle extends HttpServlet {
                 }
 
             }
+            
+            
         } else if (flag.equalsIgnoreCase("CadastroDepartamento")) {
 
             Departamento dep = new Departamento();
@@ -81,12 +83,14 @@ public class Controle extends HttpServlet {
             request.setAttribute("m", mensagem);
             RequestDispatcher disp = request.getRequestDispatcher("MensagensDeErro.jsp");
             disp.forward(request, response);
+            
         }else if(flag.equalsIgnoreCase("ListarDepartamento")){
             
             List<Departamento> departamentos = new EmpresaDao().listarDepartamentos(); //Instancia logo de uma vez, ao inves de criar uma variavel "atoa";
             request.setAttribute("listarDepartamentos", departamentos);
             RequestDispatcher disp = request.getRequestDispatcher("ListarDepartamentos.jsp");
             disp.forward(request, response);
+            
         }else if(flag.equalsIgnoreCase("ConsultarDepartamento")){
             
             String nomeDep = request.getParameter("nomeDepartamento");//O valor do parametro é o 'name' do input do 'ConsultarDepartamento.html';
@@ -105,15 +109,32 @@ public class Controle extends HttpServlet {
             int resultado = dao.excluirDepartamento(idDep);
             if(resultado == 1){
                 mensagem = "Departamento excluído com sucesso";
-            }else {
+            }else if(resultado == 2){
+                mensagem = "Departamento '"+idDep+"' nao existe";
+            }else{
                 mensagem = "Erro ao tentar excluir o departamento";
             }
             request.setAttribute("m", mensagem);
             RequestDispatcher disp = request.getRequestDispatcher("MensagensDeErro.jsp");
             disp.forward(request, response);
+            
+            
         }else if(flag.equalsIgnoreCase("AlterarDepartamento")){
             
             String idDep = request.getParameter("idDep");
+            String nomeDep = request.getParameter("nomeDep");
+            String foneDep = request.getParameter("foneDep");
+            
+            EmpresaDao dao = new EmpresaDao();
+            int resultado = dao.alterarDepartamento(idDep, nomeDep, foneDep);
+            if(resultado == 1){
+                mensagem = "Dados do departamento alterados com sucesso";
+            }else{
+                mensagem = "Erro ao tentar alterar dados do departamento";
+            }
+            request.setAttribute("m", mensagem);
+            RequestDispatcher disp = request.getRequestDispatcher("MensagensDeErro.jsp");
+            disp.forward(request, response);
             
         }
     }
