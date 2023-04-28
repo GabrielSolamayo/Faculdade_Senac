@@ -119,7 +119,7 @@ public class Controle extends HttpServlet {
             disp.forward(request, response);
             
             
-        }else if(flag.equalsIgnoreCase("AlterarDepartamento")){
+        }else if(flag.equalsIgnoreCase("AlterarDepartamento")){//Altera o departamento, referente a listagem de depatamento;
             
             String idDep = request.getParameter("idDep");
             String nomeDep = request.getParameter("nomeDep");
@@ -135,6 +135,22 @@ public class Controle extends HttpServlet {
             request.setAttribute("m", mensagem);
             RequestDispatcher disp = request.getRequestDispatcher("MensagensDeErro.jsp");
             disp.forward(request, response);
+            
+        }else if(flag.equalsIgnoreCase("BuscarDepartamento")){ //Busaca o departamento pelo ID para alterar;
+            
+            String idDep = request.getParameter("idDep");
+            EmpresaDao dao = new EmpresaDao();
+            Departamento dep = dao.buscarDepartamento(idDep);
+            if(dep == null){
+                request.setAttribute("m", "Departamento não encontrado, seu P A T I F E");
+                RequestDispatcher disp = request.getRequestDispatcher("MensagensDeErro.jsp");
+                disp.forward(request, response);
+            }else{
+                request.setAttribute("dep", dep);
+                RequestDispatcher disp = request.getRequestDispatcher("AlterarDepartamentoPeloID.jsp");
+                disp.forward(request, response);
+            }
+            
             
         }
     }
