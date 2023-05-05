@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Prova</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./conf.css">
+        <link rel="stylesheet" type="text/css" href="./menu.css">
+    </head>
+    <body>
+        <!–Azul–>
+        <header> 
+            <h1 class="titulo">PROOVVAAA</h1>
+        </header>
+        
+        <!– Amarelo  –>
+        <nav>
+            <div class="topnav" id="myTopnav">
+                <a href="abertura.html" class="active">Home</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Alunos 
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="CadastrarAluno.html" target="conteudo">Salvar</a>
+                        <a href="ConsultarAlunos.html" target="conteudo">Consultar</a>
+                        <a href="Controle?flag=ListarAlunos" target="conteudo">Listar</a>
+                        <a href="ExcluirAlunos.html" target="conteudo">Excluir</a>
+                        <a href="BuscarAluno.html" target="conteudo">Alterar</a>
+                    </div>
+                </div> 
+                
+                 
+                <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+            </div>
+        </nav>
+        <hr/>
+
+        <!– Vermelho –>
+        <main>
+            <iframe src="abertura.html" name="conteudo"></iframe>
+        </main>
+        
+        <!– Verde –>
+        <footer>
+            
+        </footer>
+    </body>
+</html>

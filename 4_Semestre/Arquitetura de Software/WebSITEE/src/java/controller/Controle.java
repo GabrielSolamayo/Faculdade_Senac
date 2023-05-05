@@ -95,7 +95,7 @@ public class Controle extends HttpServlet {
             
             String nomeDep = request.getParameter("nomeDepartamento");//O valor do parametro é o 'name' do input do 'ConsultarDepartamento.html';
             EmpresaDao dao = new EmpresaDao();//Instancia um objeto da classe EmpresaDao para acessar os métodos desta classe;
-            List<Departamento> departamentos = dao.consultarDepartamentos(nomeDep);//Chama o método consultarDepartamento passando o nome do departamento e recebe a lista evolvida pelo método;
+            List<Departamento> departamentos = dao.consultarDepartamentos(nomeDep);//Chama o método consultarDepartamentos passando o nome do departamento e recebe a lista evolvida pelo método;
            
             //Enviar a lista de Departamentos para o arquivo ListarDepartamentos.jsp;
             request.setAttribute("listarDepartamentos", departamentos);

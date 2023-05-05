@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form method="POST" action="Controle">
+            <input type="hidden" name="flag" value="CadastroAluno">
+            <p>
+                <label for="matricula">Matrícula: </label>
+                <input type="number" size="10" maxlength="10" name="matricula" id="matricula" required>
+            </p>
+            <p>
+                <label for="nome">Nome: </label>
+                <input type="text" size="50" maxlength="70" name="nome" id="nome" required>
+            </p>
+            <p>
+                <label for="disciplina">Disciplina: </label>
+                <input type="text" size="50" maxlength="70" name="disciplina" id="disciplina">
+            </p>
+            <p>
+                <label for="quantAula">Quantidade de Aula: </label>
+                <input type="number" size="10" maxlength="3" name="quantAula" id="quantAula">
+            </p>
+            <p>
+                <label for="mediaF"> Média Final: </label>
+                <input type="text" pattern="[0-9]+([,\.][0-9]+)?" size="10" maxlength="3" name="mediaF" id="mediaF">
+            </p>
+            <input type="submit" value="Cadastrar">
+        </form>
+    </body>
+</html>

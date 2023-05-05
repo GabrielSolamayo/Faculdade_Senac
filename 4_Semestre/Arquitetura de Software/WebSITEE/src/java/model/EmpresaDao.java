@@ -67,7 +67,6 @@ public class EmpresaDao {
         } catch (NoResultException ex) {
             return null;
         }
-
     }
 
     public List<Departamento> consultarDepartamento(String nome) {
