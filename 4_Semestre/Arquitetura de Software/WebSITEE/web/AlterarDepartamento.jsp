@@ -7,7 +7,7 @@
         <title>Alterar Departamento</title>
     </head>
     <body>
-        <form method="post" action="Controle">//Mandando pra ServLest 'Controle'
+        <form method="post" action="ControleDepartamento">//Mandando pra ServLest 'Controle'
             <input type="hidden" name="flag" value="AlterarDepartamento">
             <p>
                 <label for="idDep">Código</label>

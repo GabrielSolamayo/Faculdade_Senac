@@ -1,5 +1,6 @@
 
-<%@page import="model.Departamento"%>
+
+<%@page import="model.entity.Departamento"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,7 @@
             Departamento dep = (Departamento) request.getAttribute("dep");//Fazendo um Cast para Departamento, pois o 'getAttribute' só recebe tipo Object generico;
         %>
         
-        <form method="post" action="Controle">//Mandando pra ServLest 'Controle'
+        <form method="post" action="ControleDepartamento">//Mandando pra ServLest 'Controle'
             <input type="hidden" name="flag" value="AlterarDepartamento">
             <p>
                 <label for="idDep">Código</label>

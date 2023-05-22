@@ -29,7 +29,7 @@
                         <a href="BuscarDepartamento.html" target="conteudo">Alterar</a>
                         <a href="ExcluirDepartamento.html" target="conteudo">Excluir</a>
                         <a href="ConsultarDepartamento.html" target="conteudo">Consultar</a>
-                        <a href="Controle?flag=ListarDepartamento" target="conteudo">Listar</a>
+                        <a href="ControleDepartamento?flag=ListarDepartamento" target="conteudo">Listar</a>
                     </div>
                 </div> 
                 <div class="dropdown">
@@ -41,7 +41,7 @@
                         <a href="AlterarFuncionário.html" target="conteudo">Alterar</a>
                         <a href="ExcluirFuncionário.html" target="conteudo">Excluir</a>
                         <a href="ConsultarFuncionário.html" target="conteudo">Consultar</a>
-                        <a href="ListarFuncionário.html" target="conteudo">Listar</a>
+                        <a href="ControleFuncionario?flag=ListarFuncionario" target="conteudo">Listar</a>
                     </div>
                 </div>
                 <div class="dropdown">

@@ -4,8 +4,8 @@
     Author     : gabriel.esmunoz
 --%>
 
+<%@page import="model.entity.Departamento"%>
 <%@page import="java.util.List"%>
-<%@page import="model.Departamento"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -35,7 +35,7 @@
                 <td><%= departamento.getIdDep() %></td>//<%--tag usada para exibir (<%= %> --%>
                 <td><%= departamento.getNomeDep() %></td>
                 <td><%= departamento.getFoneDep() %></td>
-                <td><a href="Controle?flag=ExcluirDepartamento&idDep=<%= departamento.getIdDep() %>">Excluir</a></td>
+                <td><a href="ControleDepartamento?flag=ExcluirDepartamento&idDep=<%= departamento.getIdDep() %>">Excluir</a></td>
                 <td><a href="AlterarDepartamento.jsp?idDep=<%= departamento.getIdDep() %>&nomeDep=<%= departamento.getNomeDep() %>&foneDep=<%= departamento.getFoneDep() %>">Alterar</a></td>
             </tr>
             <%

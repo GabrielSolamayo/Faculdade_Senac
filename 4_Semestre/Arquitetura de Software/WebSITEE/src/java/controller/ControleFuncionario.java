@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,8 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Departamento;
-import model.EmpresaDao;
+import model.entity.Departamento;
+import model.dao.EmpresaDao;
+import model.entity.Funcionario;
 
 @WebServlet(name = "ControleFuncionario", urlPatterns = {"/ControleFuncionario"})
 public class ControleFuncionario extends HttpServlet {
@@ -19,14 +19,70 @@ public class ControleFuncionario extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         EmpresaDao dao = new EmpresaDao();
+        Funcionario func = new Funcionario();
+        Departamento dep = new Departamento();
         String mensagem;
+        RequestDispatcher disp = null;
         String flag = request.getParameter("flag");
+        int resp;
         if (flag.equalsIgnoreCase("BuscarDepartamento")) {//Busca os departamento cadastrados para carregar no cadastro Funcionario;
+            
             List<Departamento> departamentos = dao.listarDepartamentos();
             request.setAttribute("departamentos", departamentos);
-            RequestDispatcher disp = request.getRequestDispatcher("CadastrarFuncionario.jsp");
-            disp.forward(request, response);
+            disp = request.getRequestDispatcher("CadastrarFuncionario.jsp");
+        
+        } else if (flag.equalsIgnoreCase("CadastrarFuncionario")) { // Cadastra o funcionario;
+            
+            String email, nome, cargo, idDep;
+            double salario;
+            func.setEmailFunc(email = request.getParameter("email"));
+            func.setNomeFunc(nome = request.getParameter("nome"));
+            func.setCargoFunc(cargo = request.getParameter("cargo"));
+            func.setSalarioFunc(salario = Double.parseDouble(request.getParameter("salario")));
+            dep.setIdDep(idDep = request.getParameter("idDep"));
+            func.setDepartamento(dep);
+
+            resp = dao.salvar(func);
+
+            switch (resp) {
+                case 1:
+                    mensagem = "Funcionario cadastrado com sucesso";
+                    break;
+                case 2:
+                    mensagem = "Este Funcionario ja está cadastrado";
+                    break;
+                default:
+                    mensagem = "Entre em contato com o administrador";
+                    break;
+            }
+            request.setAttribute("m", mensagem);
+            disp = request.getRequestDispatcher("MensagensDeErro.jsp");
+
+        } else if (flag.equalsIgnoreCase("ListarFuncionario")) { // Ele busca todos os funcionarios cadastrados;
+           
+            List<Funcionario> funcionario = dao.listarFuncionarios();
+            request.setAttribute("listarFuncionario", funcionario);
+            disp = request.getRequestDispatcher("ListarFuncionarios.jsp");
+            
+        }else if(flag.equals("ExcluirFuncionario")){
+            
+            String email;
+            resp = dao.excluirFuncionario(email = request.getParameter("emailFunc"));
+            switch (resp) {
+                case 1:
+                    mensagem = "Funcionario excluido com sucesso";
+                    break;
+                case 2:
+                    mensagem = "Este Funcionario não existe";
+                    break;
+                default:
+                    mensagem = "Entre em contato com o administrador";
+                    break;
+            }
+            request.setAttribute("m", mensagem);
+            disp = request.getRequestDispatcher("MensagensDeErro.jsp"); 
         }
+        disp.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -1,4 +1,4 @@
-package model;
+package model.dao;
 
 import java.util.List;
 import javax.persistence.EntityExistsException;
@@ -7,15 +7,16 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import model.entity.Acesso;
+import model.entity.Departamento;
+import model.entity.Funcionario;
 
 public class EmpresaDao {
 
-    private EntityManagerFactory conn;
     private EntityManager manager;
 
-    public void conectar() {
-        conn = Persistence.createEntityManagerFactory("WebSITEEPU");//Nome tirado da pasta "Configuration Files", "pesistence.xml";
-        manager = conn.createEntityManager();
+    private void conectar() {
+        manager = Persistence.createEntityManagerFactory("WebSITEEPU").createEntityManager();
     }
 
     public Acesso validarLogin(String u, String s) {
@@ -24,19 +25,17 @@ public class EmpresaDao {
             TypedQuery<Acesso> q = manager.createNamedQuery("Acesso.findByEmailSenhaFunc", Acesso.class);//Query tirado da classe "Acesso",query para pegar usuario e senha;
             q.setParameter("senhaFunc", s);
             q.setParameter("emailFunc", u);
-            Acesso acesso = q.getSingleResult();
-            return acesso;
+            return q.getSingleResult();
         } catch (NoResultException ex) {
             return null;
         }
-
     }
 
-    public int salvarDepartamento(Departamento dep) {
+    public <T> int salvar(T obj) {
         conectar();
         try {
             manager.getTransaction().begin();
-            manager.persist(dep);
+            manager.persist(obj);
             manager.getTransaction().commit();
             return 1;//Cadastro;
         } catch (EntityExistsException ex) {
@@ -50,9 +49,7 @@ public class EmpresaDao {
     public List<Departamento> listarDepartamentos() {
         conectar();
         try {
-            TypedQuery<Departamento> q = manager.createNamedQuery("Departamento.findAll", Departamento.class);//Query tirado da classe "Departamento";
-            List<Departamento> departamentos = q.getResultList();
-            return departamentos;
+            return manager.createNamedQuery("Departamento.findAll", Departamento.class).getResultList();
         } catch (NoResultException ex) {
             return null;
         }
@@ -61,9 +58,7 @@ public class EmpresaDao {
     public List<Departamento> consultarDepartamentos(String nomeDep) {
         conectar();
         try {
-            TypedQuery<Departamento> q = manager.createNamedQuery("Departamento.findByNomeDep", Departamento.class).setParameter("nomeDep", "%" + nomeDep + "%");
-            List<Departamento> departamentos = q.getResultList();
-            return departamentos;
+            return manager.createNamedQuery("Departamento.findByNomeDep", Departamento.class).setParameter("nomeDep", "%" + nomeDep + "%").getResultList();
         } catch (NoResultException ex) {
             return null;
         }
@@ -74,8 +69,7 @@ public class EmpresaDao {
         try {
             TypedQuery<Departamento> q = manager.createNamedQuery("Departament.findAll", Departamento.class);
             q.setParameter("nomeDep", nome);
-            List<Departamento> departamentos = q.getResultList();
-            return departamentos;
+            return q.getResultList();
         } catch (NoResultException ex) {
             return null;
         }
@@ -121,7 +115,34 @@ public class EmpresaDao {
 
     public Departamento buscarDepartamento(String idDep) {
         conectar();
-        Departamento dep = manager.find(Departamento.class, idDep);
-        return dep;
+        return manager.find(Departamento.class, idDep);
+    }
+    
+    public List<Funcionario> listarFuncionarios() {
+        conectar();
+        try {
+            return manager.createNamedQuery("Funcionario.findAll", Funcionario.class).getResultList();
+        } catch (NoResultException ex) {
+            return null;
+        }
+    }
+    
+    public int excluirFuncionario(String email) {
+        conectar();
+
+        try {
+            Funcionario func = manager.find(Funcionario.class, email);
+            if (func == null) {
+                return 2;//Nao Existe;
+            } else {
+                manager.getTransaction().begin();
+                manager.remove(func);//So aceita tipos Object;
+                manager.getTransaction().commit();
+                return 1;//Encontrados;
+            }
+        } catch (Exception ex) {
+            return 0;//Nao encontrado;
+        }
+
     }
 }
