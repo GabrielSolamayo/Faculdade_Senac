@@ -1,0 +1,62 @@
+import { Text, SafeAreaView, StyleSheet, View, Image, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+
+export default function App() {
+
+  const imagens = [
+    'https://cdn.acritica.net/img/pc/450/300/dn_arquivo/2023/03/unnamed_2.jpg',
+    'https://www.msd-saude-animal.com.br/wp-content/uploads/sites/55/2021/07/imagen-1.jpg',
+    'https://blog.cobasi.com.br/wp-content/uploads/2023/03/animais-com-a-letra-l-lemure.webp'
+  ];
+  const [imageIndex, setImageIndex] = useState(0);
+
+  return (
+    <View style={styles.container}>
+      <Image 
+      source={{uri: imagens[imageIndex]}}
+      style={styles.img}
+      />
+
+      <TouchableOpacity 
+      style={styles.button}
+      onPress={() => setImageIndex(0)}>
+        <Text>Imagem 1</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity 
+      style={styles.button}
+      onPress={() => setImageIndex(1)}>
+        <Text>Imagem 2</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity 
+      style={styles.button}
+      onPress={() => setImageIndex(2)}>
+        <Text>Imagem 3</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  img : {
+    alignSelf: "center",
+    width: 200,
+    height: 200,
+  },
+  button: {
+    backgroundColor: "#CD853F",
+    width: "60%",
+    height: 54,
+    justifyContent: "center",
+    alignItems: "center",
+    elevation: 2,
+    borderRadius: 8,
+    marginTop: 16,
+  },
+});

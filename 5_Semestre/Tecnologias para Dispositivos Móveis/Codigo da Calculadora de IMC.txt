@@ -1,0 +1,89 @@
+import {useState} from 'react';
+import { Text, SafeAreaView, StyleSheet, TextInput, View, TouchableOpacity, Alert} from 'react-native';
+
+
+export default function App() {
+  const [altura, setAltura] = useState("");
+  const [peso, setPeso] = useState("");
+  const CalcularIMC = () => {
+
+    const heigth = parseFloat(altura) / 100;
+    const weight = parseFloat(peso);
+    const imc = weight / (heigth * heigth);
+    
+    if(imc < 18.5){
+      return Alert.alert("Abaixo do Peso", `Seu IMC é de ${imc.toFixed(2)}`);
+    }else if(imc >= 18.5 && imc < 25 ){
+      return Alert.alert("Peso Normal", `Seu IMC é de ${imc.toFixed(2)}`);
+    }else if(imc >= 25 && imc < 30){
+      return Alert.alert("Acima do Peso", `Seu IMC é de ${imc.toFixed(2)}`);
+    }else if (imc >= 30){
+      return Alert.alert("Obesidade balofo", `Seu IMC é de ${imc.toFixed(2)}`);
+    }
+  }
+
+
+  return (
+    <View style={styles.container}>
+      {/* <Text>{`${altura}-${peso}`}</Text> !! PARA MOSTRAR O SE ESTA RETORNANDO OS VALORS NOS INPUTS !!*/}
+      <Text style={styles.titulo}>Calculadora de IMC</Text>
+
+      <TextInput 
+      style={styles.input}
+      value={altura}
+      onChangeText= {(text) => setAltura(text)}
+      placeholder= "Altura (cm)"
+      keyboardType= "number-pad">
+      </TextInput>
+
+      <TextInput 
+      style={styles.input} 
+      value={peso}
+      onChangeText= {(text) => setPeso(text)}
+      placeholder= "Peso (kg)" 
+      keyboardType= "number-pad">
+      </TextInput>
+
+      <TouchableOpacity 
+      style={styles.button} 
+      onPress= {CalcularIMC}>
+        <Text>Calcular</Text>
+      </TouchableOpacity>
+
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  titulo: {
+    fontSize:24,
+  },
+  input: {
+    width: 200,
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    margin: 10,
+    padding: 5,
+  },
+  button: {
+    backgroundColor: "#2AD131",
+    width: "50%",
+    height: 54,
+    justifyContent: "center",
+    alignItems: "center",
+    elevation: 2,
+    borderRadius: 8,
+    marginTop: 16,
+  },
+  textButton: {
+    fontFamily: "Poppins _600SemiBold",
+    color: "#FFF",
+    fontSize: 12,
+  },
+});
