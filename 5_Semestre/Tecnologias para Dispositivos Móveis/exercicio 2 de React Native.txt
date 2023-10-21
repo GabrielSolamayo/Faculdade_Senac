@@ -1,0 +1,161 @@
+import {
+  Text,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  TextInput,
+} from 'react-native';
+import React, { useState } from 'react';
+
+export default function App() {
+  const [valorAtual, setvalorAtual] = useState('0.00');
+  const [valorDesj, setvalorDesj] = useState();
+  const [mostrarSegTela, setMostrarSegTela] = useState(false); //false não aparece, true aparece;
+  const [operacao, setOperacao] = useState('');
+
+  const getTextColor = (valor) => {
+    return parseInt(valor) < 0 ? 'red' : 'green';
+  };
+
+  const aparecerSegTela = (tipo) => {
+    if (tipo === 'Credito' || tipo === 'Debito') {
+      setMostrarSegTela(true);
+      setOperacao(tipo);
+    } else {
+      setMostrarSegTela(false); //SE FOR QUALQUER COISA DIFERENTE DE CREDITO OU DEBITO RETORNA FALSO;
+    }
+  };
+
+  const Operation = () => {
+
+    if(operacao === "Credito"){
+      setvalorAtual(parseFloat(valorAtual) + parseFloat(valorDesj));
+      setMostrarSegTela(false);
+      setvalorDesj("");
+    }else if (operacao === "Debito"){
+      setvalorAtual(parseFloat(valorAtual) - parseFloat(valorDesj));
+      setMostrarSegTela(false);
+      setvalorDesj("");
+    }
+  } 
+
+  return (
+    <View>
+      <View>
+        <View style={styles.container1}>
+          <Text style={styles.titulo}>Conta Corrente</Text>
+        </View>
+
+        <View style={styles.container2}>
+          <Text style={styles.texto}>Saldo: </Text>
+          <Text style={[styles.valor, { color: getTextColor(valorAtual) }]}>
+            R$ {valorAtual}
+          </Text>
+        </View>
+        <View style={styles.botoesContainer}>
+          <TouchableOpacity
+            style={styles.botao}
+            onPress={() => aparecerSegTela('Credito')}>
+            <Text style={styles.botaoTexto}>Credito</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.botao}
+            onPress={() => aparecerSegTela('Debito')}>
+            <Text style={styles.botaoTexto}>Debito</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {mostrarSegTela && ( //SEGUNDA TELA ESCONDIDA;
+        <View>
+          <View style={styles.operaco}>
+          <Text style={styles.texto}>Operacao de {operacao}</Text>
+          </View>
+          <View style={styles.container2}>
+            <Text style={styles.texto}>Valor: </Text>
+            <TextInput
+              style={styles.input}
+              value= {valorDesj}
+              onChangeText= {(text) => setvalorDesj(text)}
+              keyboardType="number-pad"
+              placeholder="Digite o valor desejado">
+            </TextInput>
+          </View>
+          <View style={styles.botoesContainer}>
+            <TouchableOpacity
+              style={styles.botao}
+              onPress={() => aparecerSegTela("Cancelar")}>
+              <Text style={styles.botaoTexto}>Cancelar</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.botao}
+              onPress={Operation}>
+              <Text style={styles.botaoTexto}>Salvar</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      )}
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container1: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#4682B4',
+    padding: 6,
+  },
+  container2: {
+    flex: 1,
+    paddingTop: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  operaco: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#AEB6BF',
+    marginTop: 20
+  },
+  texto: {
+    fontSize: 18,
+  },
+  titulo: {
+    fontSize: 24,
+  },
+  botoesContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 20,
+  },
+  botao: {
+    width: 100,
+    backgroundColor: '#4682B4',
+    padding: 10,
+    borderRadius: 5,
+    marginHorizontal: 5, // Espaço entre os botões
+  },
+  botaoTexto: {
+    color: 'white',
+    fontSize: 16,
+    textAlign: 'center',
+  },
+  valor: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginLeft: 5, // Espaçamento entre "Saldo" e o valor
+  },
+  input: {
+    width: 200,
+    height: 30,
+    borderColor: 'gray',
+    borderWidth: 1,
+    margin: 10,
+    padding: 5,
+  },
+});
